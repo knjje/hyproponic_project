@@ -1,0 +1,77 @@
+<!-- <div class="row">
+    <div class="col">
+        <label for="">email</label>
+        <input type="email" name="" id="" [(ngModel)]="email">
+    </div>
+</div>
+<div class="row">
+    <div class="col">
+        <label for="">password</label>
+        <input type="password" [(ngModel)]="password">
+    </div>
+</div>
+<div class="row">
+    <div class="col">
+        <button (click)="login()">submit</button>
+    </div>
+</div>
+<div class="row">
+    <div class="col">
+        <a href="/register">
+            <span>register</span>
+        </a>
+    </div>
+</div>
+<div class="row">
+    <div class="col">
+        <a href="">
+            <span>forgot password</span>
+        </a>
+    </div>
+</div> -->
+
+<div class="row mb-input">
+  <div class="col mb-5">
+    <label class="text-title">Login</label>
+  </div>
+</div>
+
+<ng-container>
+  <form class="form-floating mb-5">
+    <input
+      type="email"
+      class="form-control"
+      id=""
+      placeholder="Email"
+      [(ngModel)]="email"
+      name="email"
+    />
+    <label for="">Email</label>
+  </form>
+  <form class="form-floating mb-5">
+    <input
+      type="password"
+      class="form-control"
+      id=""
+      [(ngModel)]="password"
+      placeholder="Password"
+      name="password"
+    />
+    <label for="">Password</label>
+  </form>
+
+  <div class="row d-flex justify-content-center mb-4 m-0 p-0">
+    <div class="col-xl-12 col-lg-10 col-md-12 col-12 m-0 p-0">
+      <button (click)="login()" class="btn w-100 btn-login c-wh fw-500">
+        Login
+      </button>
+    </div>
+  </div>
+
+  <div class="row text-center">
+    <div class="col-xl-12 col-lg-10 col-md-12 col-12 mt-4">
+      <span>Already have an account?</span> &nbsp;
+      <a href="register" class="c-g fw-500">Register</a>
+    </div>
+  </div>
+</ng-container>

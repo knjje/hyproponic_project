@@ -1,0 +1,153 @@
+import { Component, OnInit } from '@angular/core';
+import { AuthService } from 'src/app/service/auth.service';
+import { environment } from 'src/environments/environment';
+import { AngularFireDatabase } from '@angular/fire/compat/database';
+import Swal from 'sweetalert2';
+
+@Component({
+  selector: 'app-sprinker',
+  templateUrl: './sprinker.component.html',
+  styleUrls: ['./sprinker.component.css'],
+})
+export class SprinkerComponent implements OnInit {
+  sf: any = 0;
+  sw: any = 0;
+  setTimeFT: any;
+  sprinker_FT: any;
+  sprinker_WT: any;
+  time_FT: any;
+  endTimeFromDatabase: any = new Date().getTime();
+
+  constructor(private auth: AuthService, private db: AngularFireDatabase) {}
+
+  async ngOnInit(): Promise<void> {
+    await this.getdata();
+    await this.getTime();
+  }
+
+  reset() {
+    this.sf = 0;
+    this.sw = 0;
+  }
+
+  calTime(time_FT: any) {
+    console.log(time_FT);
+    const setTime = new Date();
+    const timeArray = this.time_FT.split(':');
+    setTime.setHours(parseInt(timeArray[0]));
+    setTime.setMinutes(parseInt(timeArray[1]));
+    const setTimeMilliseconds = setTime.getTime();
+    const timeDifference =
+      this.auth.calculateTimeDifference(setTimeMilliseconds);
+    console.log('Time difference:', timeDifference);
+  }
+
+  getdata() {
+    let sprinklerfertilizers = this.db
+      .object('relaystate/sprinklerfertilizers')
+      .valueChanges();
+    sprinklerfertilizers.subscribe((state: any) => {
+      this.updateSwitchState('sprinklerfertilizers', state);
+      this.sprinker_FT = state;
+    });
+
+    let sprinklerwater = this.db
+      .object('relaystate/sprinklerwater')
+      .valueChanges();
+    sprinklerwater.subscribe((state: any) => {
+      this.updateSwitchState('sprinklerwater', state);
+      this.sprinker_WT = state;
+    });
+  }
+
+  getTime() {
+    this.auth.timeFT().subscribe((time: any) => {
+      this.time_FT = time;
+      console.log(time);
+      this.auth.startCountdown(time,this.sprinker_FT);
+
+    });
+  }
+
+  updateSwitchState(switchId: string, state: boolean) {
+    const switchElement = document.getElementById(switchId) as HTMLInputElement;
+    if (switchElement) {
+      switchElement.checked = state;
+    }
+  }
+
+  startTimer() {
+    this.db
+      .object('timeFT')
+      .set(this.time_FT)
+      .then(() => console.log('set time success'))
+      .catch((error) =>
+        console.error('Error updating value in Firebase:', error)
+      );
+  }
+
+  sprinklerfertilizers(event: any) {
+    this.db.object('relaystate/sprinklerfertilizers').set(event.target.checked);
+  }
+
+  sprinklerwater(event: any) {
+    this.db.object('relaystate/sprinklerwater').set(event.target.checked);
+  }
+
+  async submit() {
+    await Swal.fire({
+      title: `<b style="color='#000000'" class="fs-3">กดยืนยันเพื่อเติมสารเข้าถังน้ำ</b>`,
+      imageUrl: 'assets/icons/delAlert.png',
+      reverseButtons: true,
+      showCancelButton: true,
+      showCloseButton: true,
+      confirmButtonColor: '#00C514',
+      cancelButtonColor: '#F24E1E',
+      confirmButtonText: 'ยืนยัน',
+      cancelButtonText: 'ยกเลิก',
+      customClass: {
+        cancelButton: 'alert-btn-cancel',
+        confirmButton: 'alert-btn-confirm',
+      },
+    }).then(async (result) => {
+      this.auth.Swal('กำลังเติมสารเข้าถังน้ำ', 'success');
+      this.db
+        .object('quantitysprinklerfertilizers')
+        .set(this.sf)
+        .then(() => console.log('finish update value'))
+        .catch((error) =>
+          console.error('Error updating value in Firebase:', error)
+        );
+
+      this.db
+        .object('quantitysprinklerwater')
+        .set(this.sw)
+        .then(() => console.log('finish update value'))
+        .catch((error) =>
+          console.error('Error updating value in Firebase:', error)
+        );
+    });
+  }
+
+  SF(value: any) {
+    if (value === 250) {
+      this.sf = 13;
+    } else if (value === 500) {
+      this.sf = 26;
+    } else {
+      this.sf = 0;
+    }
+    console.log(this.sf);
+  }
+
+  SW(value: any) {
+    if (value === 250) {
+      this.sw = 13;
+    } else if (value === 500) {
+      this.sw = 26;
+    } else {
+      this.sw = 0;
+    }
+    console.log(this.sw);
+  }
+}
