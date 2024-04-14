@@ -8,57 +8,30 @@ import { LoginOutletComponent } from './outlet/login-outlet/login-outlet.compone
 import { QuantityComponent } from './function/quantity/quantity.component';
 import { RelayComponent } from './function/relay/relay.component';
 import { SprinkerComponent } from './function/sprinker/sprinker.component';
+import { MainComponent } from './outlet/main/main.component';
+import { SideNavComponent } from './outlet/side-nav/side-nav.component';
+import { SettingTimeComponent } from './function/setting-time/setting-time.component';
 
 const routes: Routes = [
-  {path:'',redirectTo:'login',pathMatch:'full'},
-  // {path:'outlet',component:OutletComponent},
-  // {path:'login',component:LoginComponent},
-  // {path:'register',component:RegisterComponent},
-  // {path:'',component:HomeComponent},
-
-  // {
-  //   path: '',
-  //   component: LoginOutletComponent,
-  //   children: [
-  //     {
-  //       path: 'home',
-  //       component: HomeComponent,
-  //       data: {
-  //         breadcrumbTh: 'ยืนยันคำสั่งซื้อ',
-  //         breadcrumbEn: 'confirm-purchase',
-  //       },
-  //     },
-  //   ],
-  // },
+  { path: '', redirectTo: 'login', pathMatch: 'full' },
   {
-    path: 'login',
+    path: '',
     component: LoginOutletComponent,
-    children: [{ path: '', component: LoginComponent }],
+    children: [
+      { path: 'login', component: LoginComponent },
+      { path: 'register', component: RegisterComponent },
+    ],
   },
   {
-    path: 'register',
-    component: LoginOutletComponent,
-    children: [{ path: '', component: RegisterComponent }],
-  },
-  {
-    path: 'home',
-    component: OutletComponent,
-    children: [{ path: '', component: HomeComponent }],
-  },
-  {
-    path: 'quantity',
-    component: OutletComponent,
-    children: [{ path: '', component: QuantityComponent }],
-  },
-  {
-    path: 'relay',
-    component: OutletComponent,
-    children: [{ path: '', component: RelayComponent }],
-  },
-  {
-    path: 'sprinker',
-    component: OutletComponent,
-    children: [{ path: '', component: SprinkerComponent }],
+    path: '',
+    component: MainComponent,
+    children: [
+      { path: 'home', component: HomeComponent },
+      { path: 'quantity', component: QuantityComponent },
+      { path: 'relay', component: RelayComponent },
+      { path: 'sprinker', component: SprinkerComponent },
+      { path: 'set-time', component: SettingTimeComponent },
+    ],
   },
 ];
 

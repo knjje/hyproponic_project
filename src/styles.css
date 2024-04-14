@@ -5,8 +5,11 @@
 }
 
 html,
-body {
+body  {
     height: 100%;
+    background-image: url("assets\image\bg-lake.svg");
+    background-repeat: no-repeat;
+    background-size: cover;
 }
 
 body {
@@ -39,7 +42,6 @@ body {
 ::-webkit-scrollbar-thumb:hover {
     background: #dfb839 !important;
 }
-
 
 
 .bg-color {
@@ -79,7 +81,8 @@ body {
 .circle-photo {
     height: 65px;
     width: 65px;
-    border-radius: 50% !important;}
+    border-radius: 50% !important;
+}
 
 .z {
     z-index: 1;
@@ -153,7 +156,8 @@ body {
 }
 
 .card {
-    border-radius: 32px;
+    background-color: #FFFFFF99;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
 }
 
 .text-title {
@@ -191,19 +195,35 @@ body {
     color: #b90303;
 }
 
-.c-green{
+.c-green {
     color: #7c9713;
 }
 
-.f-40{
+.f-50 {
+    font-size: 50px;
+}
+
+.f-40 {
     font-size: 40px;
 }
 
-.f-28{
+.f-30 {
+    font-size: 30px;
+}
+
+.f-28 {
     font-size: 28px;
 }
 
-.fw-700{
+.f-22 {
+    font-size: 22px;
+}
+
+.f-20 {
+    font-size: 20px;
+}
+
+.fw-700 {
     font-weight: 700;
 }
 
@@ -225,18 +245,14 @@ a:hover {
 
 }
 
-.card{
-    background-color: #FFFFFF99;
-}
-
-.box{
+.box {
     border-radius: 300px;
     background-color: white;
     box-shadow: 0px 4px 20px 0px #00000040;
-    height: 40px;
+    height: 90px;
 }
 
-.button-w{
+.button-w {
     border-radius: 300px;
     background-color: #00B2FF;
     color: white;
@@ -248,17 +264,17 @@ a:hover {
     align-items: center;
 }
 
-.button-w:hover{
-    color: white; 
+.button-w:hover {
+    color: white;
     background-color: #0d66da;
 }
 
-.button-wa:hover{
-    color: white; 
+.button-wa:hover {
+    color: white;
     background-color: #c00c4b;
 }
 
-.button-wa{
+.button-wa {
     border-radius: 300px;
     background-color: #F8538C;
     color: white;
@@ -270,12 +286,12 @@ a:hover {
     align-items: center;
 }
 
-.center{
+.center {
     display: flex;
     justify-content: center;
 }
 
-.pad-20{
+.pad-20 {
     padding-left: 40px;
     padding-right: 40px;
 }
@@ -285,15 +301,15 @@ a:hover {
     display: inline-block;
     width: 60px;
     height: 34px;
-  }
-  
-  .switch input {
+}
+
+.switch input {
     opacity: 0;
     width: 0;
     height: 0;
-  }
-  
-  .slider {
+}
+
+.slider {
     position: absolute;
     cursor: pointer;
     top: 0;
@@ -303,9 +319,9 @@ a:hover {
     background-color: #ccc;
     -webkit-transition: 0.4s;
     transition: 0.4s;
-  }
-  
-  .slider:before {
+}
+
+.slider:before {
     position: absolute;
     content: "";
     height: 26px;
@@ -315,54 +331,61 @@ a:hover {
     background-color: white;
     -webkit-transition: 0.4s;
     transition: 0.4s;
-  }
-  
-  input:checked+.slider {
+}
+
+input:checked+.slider {
     background-color: #4caf50;
-  }
-  
-  input:focus+.slider {
+}
+
+input:focus+.slider {
     box-shadow: 0 0 1px #4caf50;
-  }
-  
-  input:checked+.slider:before {
+}
+
+input:checked+.slider:before {
     -webkit-transform: translateX(26px);
     -ms-transform: translateX(26px);
     transform: translateX(26px);
-  }
-  
-  /* Rounded sliders */
-  .slider.round {
-    border-radius: 34px;
-  }
-  
-  .slider.round:before {
-    border-radius: 50%;
-  }
+}
 
-  .alert-btn-cancel {
+/* Rounded sliders */
+.slider.round {
+    border-radius: 34px;
+}
+
+.slider.round:before {
+    border-radius: 50%;
+}
+
+.alert-btn-cancel {
     color: #FFF !important;
     font-weight: 600;
     border: 1px #F24E1E solid !important;
     width: 100px !important;
     border-radius: 50px !important;
     background-color: #F24E1E !important;
-  }
+}
 
-  .alert-btn-confirm {
+.alert-btn-confirm {
     color: #FFF !important;
     font-weight: 600;
     border: 1px #00C514 solid !important;
     width: 100px !important;
     border-radius: 50px !important;
     background-color: #00C514 !important;
-  }
+}
 
-
+.btn-confirm{
+    width: 150px;
+    height: 50px;
+    border-radius: 30px;
+    border: 3px;
+    margin: 4px;
+    font-size: 25px;
+    font-weight: 500;
+}
 .reset {
     background-color: #d01212;
     color: white;
-
 }
 
 .reset:hover {
@@ -389,8 +412,3 @@ a:hover {
     background-color: #19c82a;
     color: white;
 }
-
-.active {
-    background-color: #eecf06;
-}
-  

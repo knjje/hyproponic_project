@@ -1,4 +1,4 @@
-<div class="row">
+<!-- <div class="row">
   <div class="col">
     <p class="f-40 fw-700 text-center">Relay State</p>
 
@@ -173,3 +173,242 @@
     </div>
   </div>
 </div>
+
+
+<div class="row">
+  <div class="col">
+    <span>ft:</span>&nbsp;
+    <input type="time" [(ngModel)]="time_FT" />
+    <button (click)="sendTime()">click</button>
+  </div>
+</div>
+<div class="row">
+  <div class="col">
+    <span>mb:</span>&nbsp;
+    <input type="time" [(ngModel)]="time_MB" />
+    <button (click)="sendTime()">click</button>
+  </div>
+</div>
+<div class="row">
+  <div class="col">
+    <span>PHD:</span>&nbsp;
+    <input type="time" [(ngModel)]="time_PHD" />
+    <button (click)="sendTime()">click</button>
+  </div>
+</div>
+<div class="row">
+  <div class="col">
+    <span>PHU:</span>&nbsp;
+    <input type="time" [(ngModel)]="time_PHU" />
+    <button (click)="sendTime()">click</button>
+  </div>
+</div> -->
+
+<div class="row">
+  <div class="col-xl-3 col-lg-3 col-md-12 col-sm-12 container mb-4">
+    <div class="card">
+      <div class="imgBx">
+        <img src="assets\icon\fan_2976070.png" class="img3" />
+      </div>
+      <div class="contentBx">
+        <h2 class="mb-2">ต้องการเปิดพัดลมหรือไม่?</h2>
+        <div class="col">
+          <button
+            class="btn"
+            (click)="openFan(true)"
+            [class.active]="Fan == true"
+          >
+            เปิดใช้งาน
+          </button>
+        </div>
+        <div class="col">
+          <button
+            class="btn"
+            (click)="openFan(false)"
+            [class.active]="Fan == false"
+          >
+            ปิดใช้งาน
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="col-xl-3 col-lg-3 col-md-6 col-sm-6 container mb-4">
+    <div class="card">
+      <div class="imgBx">
+        <img src="assets\icon\led-light_6357876.png" class="img3" />
+      </div>
+      <div class="contentBx">
+        <h2 class="mb-2">ต้องการเปิดไฟหรือไม่?</h2>
+        <div class="col">
+          <button
+            class="btn"
+            (click)="openLed(true)"
+            [class.active]="Led == true"
+          >
+            เปิดใช้งาน
+          </button>
+        </div>
+        <div class="col">
+          <button
+            class="btn"
+            (click)="openLed(false)"
+            [class.active]="Led == false"
+          >
+            ปิดใช้งาน
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="col-xl-3 col-lg-3 col-md-6 col-sm-6 container mb-4">
+    <div class="card">
+      <div class="imgBx">
+        <img src="assets/icon/pump_2299254.png" class="img3" />
+      </div>
+      <div class="contentBx">
+        <h2 class="mb-2">ต้องการเปิดปั๊มน้ำหรือไม่?</h2>
+        <div class="col">
+          <button
+            class="btn"
+            (click)="openPwater(true)"
+            [class.active]="Pwater == true"
+          >
+            เปิดใช้งาน
+          </button>
+        </div>
+        <div class="col">
+          <button
+            class="btn"
+            (click)="openPwater(false)"
+            [class.active]="Pwater == false"
+          >
+            ปิดใช้งาน
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+  <div class="row">
+    <div class="col-xl-3 col-lg-3 col-md-6 col-sm-6 container mb-4">
+      <div class="card">
+        <div class="imgBx">
+          <img src="assets\icon\fertilizer_2674327.png" class="img3" />
+        </div>
+        <div class="contentBx">
+          <h2 class="mb-2">ต้องการเติมปุ๋ยหรือไม่?</h2>
+          <div class="col">
+            <button
+              class="btn"
+              (click)="openFT(true)"
+              [class.active]="FT == true"
+            >
+              เปิดใช้งาน
+            </button>
+          </div>
+          <div class="col">
+            <button
+              class="btn"
+              (click)="openFT(false)"
+              [class.active]="FT == false"
+            >
+              ปิดใช้งาน
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  
+    <div class="col-xl-3 col-lg-3 col-md-6 col-sm-6 container mb-4">
+      <div class="card">
+        <div class="imgBx">
+          <img src="assets\icon\microbial-culture_9851909.png" class="img3" />
+        </div>
+        <div class="contentBx">
+          <h2 class="mb-2">ต้องการเติมสารอาหารหรือไม่?</h2>
+          <div class="col">
+            <button
+              class="btn"
+              (click)="openMB(true)"
+              [class.active]="MB == true"
+            >
+              เปิดใช้งาน
+            </button>
+          </div>
+          <div class="col">
+            <button
+              class="btn"
+              (click)="openMB(false)"
+              [class.active]="MB == false"
+            >
+              ปิดใช้งาน
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  
+    <div class="col-xl-3 col-lg-3 col-md-6 col-sm-6 container mb-4">
+      <div class="card">
+        <div class="imgBx">
+          <img src="assets\icon\ph_9285528.png" class="img3" />
+        </div>
+        <div class="contentBx">
+          <h2 class="mb-2">ต้องการเพิ่มค่า pH หรือไม่?</h2>
+          <div class="col">
+            <button
+              class="btn"
+              (click)="openPhU(true)"
+              [class.active]="PhU == true"
+            >
+              เปิดใช้งาน
+            </button>
+          </div>
+          <div class="col">
+            <button
+              class="btn"
+              (click)="openPhU(false)"
+              [class.active]="PhU == false"
+            >
+              ปิดใช้งาน
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+    <div class="col-xl-3 col-lg-3 col-md-6 col-sm-6 container mb-4">
+      <div class="card">
+        <div class="imgBx">
+          <img src="assets\icon\ph-meter_6355268.png" class="img3" />
+        </div>
+        <div class="contentBx">
+          <h2 class="mb-2">ต้องการลดค่า pH หรือไม่?</h2>
+          <div class="col">
+            <button
+              class="btn"
+              (click)="openPhD(true)"
+              [class.active]="PhD == true"
+            >
+              เปิดใช้งาน
+            </button>
+          </div>
+          <div class="col">
+            <button
+              class="btn"
+              (click)="openPhD(false)"
+              [class.active]="PhD == false"
+            >
+              ปิดใช้งาน
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+</div>
+
+

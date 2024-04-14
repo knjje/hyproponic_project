@@ -1,0 +1,67 @@
+.container {
+    display: flex;
+    height: 100vh;
+  
+  } 
+  .container {
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+  }
+
+  .bg {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    width: 100%;
+    margin: 0;
+    position: absolute;
+    z-index: 0;
+  }
+  
+  .app-header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 1000;
+  }
+  
+  .app-sidenav {
+    flex: 0 0 250px;
+    background-color: #333;
+    color: white;
+    padding: 20px;
+  }
+  
+  .content {
+    position: fixed;
+    top: 80px;
+    left: 0;
+    right: 0;
+    bottom: 0;
+  
+    overflow-y: auto;
+    z-index: 998;
+  }
+  
+  
+  
+  .content {
+    flex: 1;
+  }
+  
+  .content.content-with-sidebar {
+    margin-left: 0;
+  }
+  
+  
+  .with-sidebar {
+    padding: 3px;
+    transition: left 0.3s ease, padding-left 0.3s ease;
+  }
+  
+  .without-sidebar {
+    padding: 3px;
+    transition: left 0.3s ease, padding-left 0.3s ease;
+  }

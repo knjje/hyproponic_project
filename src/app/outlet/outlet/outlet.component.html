@@ -1,37 +1,19 @@
-<body>
-  <div class="container-fluid p-0">
-    <div class="row">
-      <div class="col p-0">
-        <img src="assets\image\Bg-first.svg" class="bg-first" />
-        <div class="row">
-          <div class="col">
-            <img src="assets\icon\nav-b.svg" class="icon-nav z" />
-          </div>
-
-          <div
-            class="col-xl-3 col-lg-3 col-md-3 col-3 mt-4 d-flex align-items-center justify-content-end me-3"
-          >
-            <div class="col d-flex align-items-center justify-content-end">
-              <img
-                class="circle-photo z"
-                src="assets\image\profile.png"
-                alt=""
-              />
-            </div>
-            <div class="col ms-4 z">
-              <label><b class="">farmer number1</b></label
-              ><br />
-              <label class="c-grey" for="">kao@gmail.com</label>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <div class="row mt-4">
-        <div class="col-12 d-flex justify-content-center z mt-4">
-          <router-outlet> </router-outlet>
-        </div>
-      </div>
-    </div>
-  </div>
-</body>
+<mat-toolbar class="custom-toolbar">
+  <button
+   mat-icon-button
+   class="neumorphic-button"
+   class="example-icon"
+   aria-label="Toggle Sidebar"
+   (click)="toggleSidebar()"
+ >
+   <mat-icon>menu</mat-icon>
+ </button>
+   &nbsp;
+   <a href="/home">Hydroponic Farm</a>
+   <span class="space"></span>
+  <button mat-icon-button class="logout-icon" aria-label="logout icon button" (click)="logout()">
+   <mat-icon>logout</mat-icon>
+ </button>
+   &nbsp;
+  
+ </mat-toolbar>

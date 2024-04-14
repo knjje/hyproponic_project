@@ -1,275 +1,133 @@
-<!-- <button (click)="logout()">logout</button> -->
-
-<div class="row">
-  <div class="col">
+<!-- <div class="row">
+  <div class="col-xl-4 col-lg-4 col-md-4 col-sm-12 mb-4">
     <div class="card">
-      <div class="card-body">
-        <div class="row p-5">
-          <div class="col">
-            <div class="row mb-4">
-              <div class="col-4 center">
-                <img src="assets\icon\cloud.png" />
-              </div>
-              <div class="col-4 center">
-                <img src="assets\icon\humidity.svg" />
-              </div>
-              <div class="col-4 center">
-                <img src="assets\icon\thermometer.svg" />
-              </div>
-            </div>
-
-            <div class="row f-40 fw-700">
-              <div class="col-4">
-                <p class="center">{{ temperatureValue }}</p>
-              </div>
-              <div class="col-4">
-                <p class="center">{{ humidityValue }}</p>
-              </div>
-              <div class="col-4">
-                <p class="center">{{ pHValue }}</p>
-              </div>
-            </div>
-
-            <div class="row fw-600 f-28 mb-4">
-              <div class="col-4">
-                <p class="center pad-20">Temperature</p>
-              </div>
-              <div class="col-4">
-                <p class="center pad-20">Humidity</p>
-              </div>
-              <div class="col-4">
-                <p class="center pad-20">pH</p>
-              </div>
-            </div>
-
-            <div class="row m-0 p-3">
-              <div class="col-6 m-0">
-                <p
-                  class="m-0 box align-items-center d-flex justify-content-center"
-                >
-                  <span>Water State High:</span>&nbsp;
-                  <span
-                    [class.c-red]="waterStateHigh == false"
-                    [class.c-green]="waterStateHigh == true"
-                    >{{ waterStateHigh == true ? 'On' : 'Off'}}</span
-                  >
-                </p>
-              </div>
-              <div class="col-6 m-0">
-                <p
-                  class="m-0 box align-items-center d-flex justify-content-center"
-                >
-                  <span>Water State Low:</span>&nbsp;
-                  <span
-                    [class.c-red]="waterStateLow == false"
-                    [class.c-green]="waterStateLow == true"
-                    >{{ waterStateLow == true ? 'On' : 'Off' }}</span
-                  >
-                </p>
-              </div>
-            </div>
-          </div>
-        </div>
+      <div class="card-body text-center">
+        <p class="card-title mb-4 l-h">
+          <img src="assets\icon\humidity.svg" />
+        </p>
+        <p class="card-text f-40 fw-700 mb-4 l-h3">{{ temperatureValue }}° C</p>
+        <p class="fw-600 f-28 mb-4 l-h3">Temperature</p>
       </div>
     </div>
-
-    <button (click)="testnoti()">เชื่อมต่อกับ Line Notify</button>
-
-    <div class="row mt-5">
-      <div class="col-6">
-        <button class="btn button-w fw-700 f-28">กดเพื่อเติมน้ำ</button>
+  </div>
+  <div class="col-xl-4 col-lg-4 col-md-4 col-sm-12 mb-4">
+    <div class="card">
+      <div class="card-body text-center">
+        <p class="card-title mb-4 l-h">
+          <img src="assets\icon\humidity.svg" />
+        </p>
+        <p class="card-text f-40 fw-700 mb-4 l-h3">{{ humidityValue }} %</p>
+        <p class="fw-600 f-28 mb-4 l-h3">Humidity</p>
       </div>
-      <div class="col-6">
-        <button class="btn button-wa fw-700 f-28">
-          กดเพื่อเติมน้ำตามปริมาตร
-        </button>
+    </div>
+  </div>
+  <div class="col-xl-4 col-lg-4 col-md-4 col-sm-12 mb-4">
+    <div class="card">
+      <div class="card-body text-center">
+        <p class="card-title mb-4 l-h">
+          <img src="assets\icon\thermometer.svg" />
+        </p>
+        <p class="card-text f-40 fw-700 mb-4 l-h3">{{ pHValue }}</p>
+        <p class="fw-600 f-28 mb-4 l-h3">pH</p>
       </div>
+    </div>
+  </div>
+</div> -->
+
+
+
+<div class="row">
+  <div
+    class="col-xl-4 col-lg-4 col-md-4 col-sm-12 mb-4 d-flex justify-content-center"
+  >
+    <div class="card-hover">
+      <div class="card-hover__content">
+        <p class="f-28 l-h3 fw-700">Temperature</p>
+        <p class="f-50 fw-700 mb-4 l-h3 ">{{ temperatureValue }} ° C</p>
+      </div>
+      <img
+        src="https://images.unsplash.com/photo-1586511925558-a4c6376fe65f?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=687&q=60"
+        alt=""
+      />
+    </div>
+  </div>
+
+  <div
+    class="col-xl-4 col-lg-4 col-md-4 col-sm-12 mb-4 d-flex justify-content-center"
+  >
+    <div class="card-hover">
+      <div class="card-hover__content">
+        <p class="f-28 l-h3 fw-700">Humidity</p>
+        <p class="f-50 fw-700 mb-4 l-h3">{{ humidityValue }} %</p>
+      </div>
+      <img
+        src="https://images.unsplash.com/photo-1586511925558-a4c6376fe65f?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=687&q=60"
+        alt=""
+      />
+    </div>
+  </div>
+
+  <div
+    class="col-xl-4 col-lg-4 col-md-4 col-sm-12 mb-4 d-flex justify-content-center"
+  >
+    <div class="card-hover">
+      <div class="card-hover__content">
+        <p class="f-28  l-h3 fw-700">pH</p>
+        <p class="f-50 fw-700 mb-4 l-h3">
+          {{ pHValue }}
+        </p>
+      </div>
+      <img
+        src="https://images.unsplash.com/photo-1586511925558-a4c6376fe65f?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=687&q=60"
+        alt=""
+      />
     </div>
   </div>
 </div>
 
-<!-- <div class="row">
-  <div class="col">
-    <h1>relay State</h1>
-
-    <div class="form-check form-switch">
-      <input
-        class="form-check-input"
-        type="checkbox"
-        name="fan"
-        id="fan"
-        (change)="fan($event)"
-        ngDefaultControl
-      />
-
-      <label class="form-check-label" for="flexSwitchCheckDefault"
-        >fanSwitch</label
+<div class="row m-0 p-3">
+  <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12 m-0 mb-4">
+    <p class="m-0 box align-items-center d-flex justify-content-center">
+      <span class="f-22 fw-500">Water State High:</span>&nbsp;
+      <span class="f-22 fw-500"
+        [class.c-red]="waterStateHigh == false"
+        [class.c-green]="waterStateHigh == true"
+        >{{ waterStateHigh == true ? "On" : "Off" }}</span
       >
-    </div>
-
-    <div class="form-check form-switch">
-      <input
-        class="form-check-input"
-        type="checkbox"
-        name="led"
-        id="led"
-        (change)="led($event)"
-        ngDefaultControl
-      />
-
-      <label class="form-check-label" for="flexSwitchCheckDefault"
-        >ledSwitch</label
-      >
-    </div>
-
-    <div class="form-check form-switch">
-      <input
-        class="form-check-input"
-        type="checkbox"
-        name="fertilizers"
-        id="fertilizers"
-        (change)="fertilizers($event)"
-        ngDefaultControl
-      />
-
-      <label class="form-check-label" for="flexSwitchCheckDefault"
-        >fertilizersSwitch</label
-      >
-    </div>
-
-    <div class="form-check form-switch">
-      <input
-        class="form-check-input"
-        type="checkbox"
-        name="microbial"
-        id="microbial"
-        (change)="microbial($event)"
-        ngDefaultControl
-      />
-
-      <label class="form-check-label" for="flexSwitchCheckDefault"
-        >microbialSwitch</label
-      >
-    </div>
-
-    <div class="form-check form-switch">
-      <input
-        class="form-check-input"
-        type="checkbox"
-        name="pumpStirring"
-        id="pumpStirring"
-        (change)="pumpStirring($event)"
-        ngDefaultControl
-      />
-
-      <label class="form-check-label" for="flexSwitchCheckDefault"
-        >pumpStirring</label
-      >
-    </div>
-
-    <div class="form-check form-switch">
-      <input
-        class="form-check-input"
-        type="checkbox"
-        name="pumpUP"
-        id="pumpUP"
-        (change)="pumpUP($event)"
-        ngDefaultControl
-      />
-
-      <label class="form-check-label" for="flexSwitchCheckDefault"
-        >pumpUP</label
-      >
-    </div>
-
-    <div class="form-check form-switch">
-      <input
-        class="form-check-input"
-        type="checkbox"
-        name="pumpphDown"
-        id="pumpphDown"
-        (change)="pumpphDown($event)"
-        ngDefaultControl
-      />
-
-      <label class="form-check-label" for="flexSwitchCheckDefault"
-        >pumpphDown</label
-      >
-    </div>
-
-    <div class="form-check form-switch">
-      <input
-        class="form-check-input"
-        type="checkbox"
-        name="pumpphUP"
-        id="pumpphUP"
-        (change)="pumpphUP($event)"
-        ngDefaultControl
-      />
-
-      <label class="form-check-label" for="flexSwitchCheckDefault"
-        >pumpphUP</label
-      >
-    </div>
-
-    <div class="form-check form-switch">
-      <input
-        class="form-check-input"
-        type="checkbox"
-        name="pumpwater"
-        id="pumpwater"
-        (change)="pumpwater($event)"
-        ngDefaultControl
-      />
-
-      <label class="form-check-label" for="flexSwitchCheckDefault"
-        >pumpwater</label
-      >
-    </div>
-
-    <div class="form-check form-switch">
-      <input
-        class="form-check-input"
-        type="checkbox"
-        name="sprinkler_fertilizers"
-        id="sprinkler_fertilizers"
-        (change)="sprinkler_fertilizers($event)"
-        ngDefaultControl
-      />
-
-      <label class="form-check-label" for="flexSwitchCheckDefault"
-        >sprinkler_fertilizers</label
-      >
-    </div>
-
-    <div class="form-check form-switch">
-      <input
-        class="form-check-input"
-        type="checkbox"
-        name="sprinkler_water"
-        id="sprinkler_water"
-        (change)="sprinkler_water($event)"
-        ngDefaultControl
-      />
-
-      <label class="form-check-label" for="flexSwitchCheckDefault"
-        >sprinkler_water</label
-      >
-    </div>
-
-    <div class="form-check form-switch">
-      <input
-        class="form-check-input"
-        type="checkbox"
-        name="valve"
-        id="valve"
-        (change)="valve($event)"
-        ngDefaultControl
-      />
-
-      <label class="form-check-label" for="flexSwitchCheckDefault"
-        >valve</label
-      >
-    </div>
+    </p>
   </div>
-</div> -->
+  <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12 m-0 mb-4">
+    <p class="m-0 box align-items-center d-flex justify-content-center">
+      <span class="f-22 fw-500">Water State Low:</span>&nbsp;
+      <span class="f-22 fw-500"
+        [class.c-red]="waterStateLow == false"
+        [class.c-green]="waterStateLow == true"
+        >{{ waterStateLow == true ? "On" : "Off" }}</span
+      >
+    </p>
+  </div>
+</div>
+
+<div class="row">
+  <div
+    class="col-xl-3 col-lg-3 col-md-3 col-sm-12 d-flex justify-content-center mb-4"
+  >
+    <button class="style-2" (click)="openRelay()">เปิดใช้อุปกรณ์</button>
+  </div>
+  <div
+    class="col-xl-3 col-lg-3 col-md-3 col-sm-12 d-flex justify-content-center mb-4"
+  >
+    <button class="style-2" (click)="openQuantity()">เติมตามปริมาตร</button>
+  </div>
+  <div
+    class="col-xl-3 col-lg-3 col-md-3 col-sm-12 d-flex justify-content-center mb-4"
+  >
+    <button class="style-2" (click)="openSprinker()">ใช้งานสปริงเกอร์</button>
+  </div>
+  <div
+    class="col-xl-3 col-lg-3 col-md-3 col-sm-12 d-flex justify-content-center mb-4"
+  >
+    <button class="style-2" (click)="openSetTime()">ตั้งค่าเวลาอุปกรณ์</button>
+  </div>
+</div>
+

@@ -1,0 +1,11 @@
+<div class="app-header" >
+    <app-outlet></app-outlet>
+  </div>
+
+  <div class="container">
+    <app-side-nav></app-side-nav>
+  </div>
+  
+   <div class="content" [ngClass]="isSidebarVisible ? 'with-sidebar' : 'without-sidebar'">
+    <router-outlet></router-outlet>
+  </div>

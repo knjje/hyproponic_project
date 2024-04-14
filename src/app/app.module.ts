@@ -74,7 +74,6 @@ import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatSortModule } from '@angular/material/sort';
 import { MatTableModule } from '@angular/material/table';
 
-
 import { AngularFireModule } from '@angular/fire/compat';
 import { AngularFirestoreModule } from '@angular/fire/compat/firestore';
 import { environment } from 'src/environments/environment';
@@ -88,8 +87,25 @@ import { QuantityComponent } from './function/quantity/quantity.component';
 import { RelayComponent } from './function/relay/relay.component';
 import { AlertComponent } from './outlet/alert/alert.component';
 import { SprinkerComponent } from './function/sprinker/sprinker.component';
+import { SideNavComponent } from './outlet/side-nav/side-nav.component';
+import { MainComponent } from './outlet/main/main.component';
+import { SettingTimeComponent } from './function/setting-time/setting-time.component';
 @NgModule({
-  declarations: [AppComponent, HomeComponent, LoginComponent, RegisterComponent, LoginOutletComponent, OutletComponent, QuantityComponent, RelayComponent, AlertComponent, SprinkerComponent],
+  declarations: [
+    AppComponent,
+    HomeComponent,
+    LoginComponent,
+    RegisterComponent,
+    LoginOutletComponent,
+    OutletComponent,
+    QuantityComponent,
+    RelayComponent,
+    AlertComponent,
+    SprinkerComponent,
+    SideNavComponent,
+    MainComponent,
+    SettingTimeComponent,
+  ],
   imports: [
     BrowserModule,
     AppRoutingModule,
@@ -138,10 +154,7 @@ import { SprinkerComponent } from './function/sprinker/sprinker.component';
     MatTableModule,
     MatRadioModule,
     AngularFireModule.initializeApp(environment.firebase),
-    AngularFirestoreModule
-    
-    
-    
+    AngularFirestoreModule,
   ],
   providers: [],
   bootstrap: [AppComponent],

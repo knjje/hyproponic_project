@@ -6,6 +6,8 @@ import { environment } from 'src/environments/environment.development';
 import Swal from 'sweetalert2';
 import { AlertComponent } from '../outlet/alert/alert.component';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { BehaviorSubject } from 'rxjs';
+
 import {
   MatDialog,
   MatDialogRef,
@@ -17,7 +19,6 @@ import { Observable } from 'rxjs';
   providedIn: 'root',
 })
 export class AuthService {
-  private apiUrl = environment.apiUrl;
   time_FT: any;
   sprinker_FT: any;
   constructor(
@@ -92,17 +93,15 @@ export class AuthService {
   startCountdown(endTime: any, sprinker_FT: any): void {
     console.log(sprinker_FT);
     console.log(endTime);
-  
+
     const setTime = new Date();
-    const timeArray = endTime.split(':'); // แยกชั่วโมงและนาที
-    setTime.setHours(parseInt(timeArray[0])); // กำหนดชั่วโมง
-    setTime.setMinutes(parseInt(timeArray[1])); // กำหนดนาที
-  
-    // เวลาปัจจุบันในมิลลิวินาที
+    const timeArray = endTime.split(':');
+    setTime.setHours(parseInt(timeArray[0]));
+    setTime.setMinutes(parseInt(timeArray[1]));
+
     const currentMilliseconds = new Date().getTime();
-    // คำนวณเวลาที่เหลือจนถึงเวลาที่ตั้ง
     let timeDifference = setTime.getTime() - currentMilliseconds;
-  
+
     console.log('setTimeMilliseconds', timeArray);
     console.log('currentMilliseconds', currentMilliseconds);
     console.log('timeDifference', timeDifference);
@@ -114,14 +113,14 @@ export class AuthService {
         .catch((error) =>
           console.error('Error updating value in Firebase:', error)
         );
-  
+
       const countdownInterval = setInterval(() => {
-        timeDifference -= 1000; // ลดค่า difFT ทีละ 1 วินาที
+        timeDifference -= 1000;
         if (timeDifference <= 0) {
-          clearInterval(countdownInterval); // หยุดการนับถอยหลังเมื่อ difFT เหลือ 0 หรือน้อยกว่า
+          clearInterval(countdownInterval);
           this.db.object('relaystate/sprinklerfertilizers').set(!sprinker_FT);
         } else {
-          this.db.object('difFT').set(timeDifference); // อัปเดตค่า difFT ใน Firebase
+          this.db.object('difFT').set(timeDifference);
         }
       }, 1000);
     } else {
@@ -186,30 +185,23 @@ export class AuthService {
     });
   }
 
-  async Post(data: any, paramHeader = null) {
-    return new Promise((resolve, reject) => {
-      const body = {
-        FormData: {
-          Data: data,
-          Date: null,
-          SessionId: null,
-        },
-      };
+  async Post(path: any, data: any, paramHeader = null): Promise<any> {
+    const body = data ;
 
-      this.http.post<any>(`${this.apiUrl}/data`, data).subscribe(
-        (res) => {
-          resolve(res);
-        },
-        (error) => {
-          resolve(false);
-        }
-      );
-    });
+    try {
+      const response = await this.http
+        .post<any>(`${environment.endpoint}${path}`, body)
+        .subscribe();
+      return response;
+    } catch (error) {
+      console.error('An error occurred:', error);
+      return false;
+    }
   }
 
   async Get(path: any) {
     return new Promise((resolve, reject) => {
-      this.http.get<any>(`${this.apiUrl}/data`).subscribe(
+      this.http.get<any>(`${environment.endpoint}${path}`).subscribe(
         (res) => {
           resolve(res);
         },
@@ -223,5 +215,12 @@ export class AuthService {
   calculateTimeDifference(savedTime: number): number {
     const currentTime = new Date().getTime();
     return savedTime - currentTime;
+  }
+
+  private sidebarVisibilitySubject = new BehaviorSubject<boolean>(false);
+  sidebarVisibility$ = this.sidebarVisibilitySubject.asObservable();
+
+  toggleSidebar() {
+    this.sidebarVisibilitySubject.next(!this.sidebarVisibilitySubject.value);
   }
 }

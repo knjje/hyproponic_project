@@ -15,8 +15,19 @@ export class SprinkerComponent implements OnInit {
   setTimeFT: any;
   sprinker_FT: any;
   sprinker_WT: any;
-  time_FT: any;
+  openFT: any;
+  openWT: any;
+  time_FT: any = '';
+  time_WT: any = '';
   endTimeFromDatabase: any = new Date().getTime();
+  data: any = {
+    sft: '',
+    swt: '',
+    ft: '',
+    mb: '',
+    phU: '',
+    phD: '',
+  };
 
   constructor(private auth: AuthService, private db: AngularFireDatabase) {}
 
@@ -42,21 +53,32 @@ export class SprinkerComponent implements OnInit {
     console.log('Time difference:', timeDifference);
   }
 
+  async sendTime() {
+    this.data.sft = this.time_FT;
+    this.data.swt = this.time_WT;
+
+    let res: any = await this.auth.Post('updateByTime', this.data);
+    if (res.status_code == 200) {
+      this.auth.Swal('ทำรายการสำเร็จ', 'success');
+    } else {
+      this.auth.Swal('ทำรายการไม่สำเร็จ', 'error');
+    }
+    console.log(this.data);
+  }
+
   getdata() {
     let sprinklerfertilizers = this.db
       .object('relaystate/sprinklerfertilizers')
       .valueChanges();
     sprinklerfertilizers.subscribe((state: any) => {
-      this.updateSwitchState('sprinklerfertilizers', state);
-      this.sprinker_FT = state;
+      this.openFT = state;
     });
 
     let sprinklerwater = this.db
       .object('relaystate/sprinklerwater')
       .valueChanges();
     sprinklerwater.subscribe((state: any) => {
-      this.updateSwitchState('sprinklerwater', state);
-      this.sprinker_WT = state;
+      this.openWT = state;
     });
   }
 
@@ -64,8 +86,7 @@ export class SprinkerComponent implements OnInit {
     this.auth.timeFT().subscribe((time: any) => {
       this.time_FT = time;
       console.log(time);
-      this.auth.startCountdown(time,this.sprinker_FT);
-
+      this.auth.startCountdown(time, this.sprinker_FT);
     });
   }
 
@@ -149,5 +170,22 @@ export class SprinkerComponent implements OnInit {
       this.sw = 0;
     }
     console.log(this.sw);
+  }
+
+  openWater(state: any) {
+    console.log(state);
+    this.openWT = state;
+    console.log(this.openWT);
+
+    this.db.object('relaystate/sprinklerwater').set(this.openWT);
+  }
+
+  openFer(state: any) {
+    console.log(state);
+    
+    this.openFT = state;
+    console.log(this.openFT);
+
+    this.db.object('relaystate/sprinklerfertilizers').set(this.openFT);
   }
 }

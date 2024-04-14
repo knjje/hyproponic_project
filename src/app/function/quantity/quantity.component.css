@@ -1,3 +1,12 @@
+@media (max-width: 400px) {
+    .f-40 {
+      font-size: 30px;
+    }
+    .f-28 {
+      font-size: 18px;
+    }
+  }
+
 .btn {
     width: 130px;
     height: 40px;
@@ -5,10 +14,8 @@
     border: 3px;
     border: 3px solid #000000;
     margin: 4px;
-}
-
-.card {
     background-color: white;
+
 }
 
 .btn:hover {
@@ -22,4 +29,115 @@
 .btn-dis {
     background-color: #c3c3c3;
     color: #000000;
+}
+
+.active{
+    background-color: #eecf06;
+}
+
+
+/* card */
+.container {
+    position: relative;
+    display: flex;
+    justify-content: center;
+}
+
+.container .card {
+    position: relative;
+    width: 320px;
+    height: 450px;
+    background: #aadfff;
+    border-radius: 20px;
+    overflow: hidden;
+}
+
+.container .card:before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: #ffb414;
+    clip-path: circle(150px at 80% 20%);
+    transition: 0.5s ease-in-out;
+}
+
+.container .card:hover:before {
+    clip-path: circle(300px at 80% -20%);
+}
+
+
+.container .card .imgBx {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 10000;
+    width: 100%;
+    height: 220px;
+    transition: 0.5s;
+}
+
+.container .card .contentBx {
+    position: absolute;
+    bottom: -65px;
+    width: 100%;
+    height: 240px;
+    text-align: center;
+    transition: 1s;
+    z-index: 10;
+}
+
+.container .card:hover .contentBx {
+    height: 240px;
+}
+
+.container .card .contentBx h2 {
+    position: relative;
+    font-weight: 600;
+    letter-spacing: 1px;
+    color: #000000;
+    margin: 0;
+}
+
+.container .card:hover .imgBx {
+    top: 24%;
+    transform: translateY(0%);
+}
+
+.container .card .imgBx img {
+    position: absolute;
+    top: 30%;
+    left: 50%;
+    transform: translate(-50%, -50%) rotate(-25deg);
+    width: 250px;
+}
+.container .card .imgBx .img1 {
+    position: absolute;
+    top: 9%;
+    left: 47%;
+    transform: translate(-50%, -50%) rotate(-20deg);
+    width: 230px;
+}
+.container .card .imgBx .img2 {
+    position: absolute;
+    top: 10%;
+    left: 50%;
+    transform: translate(-50%, -50%) rotate(-20deg);
+    width: 240px;
+}
+.container .card .imgBx .img3 {
+    position: absolute;
+    top: 10%;
+    left: 50%;
+    transform: translate(-50%, -50%) rotate(-0deg);
+    width: 240px;
+}
+.container .card .imgBx .img4 {
+    position: absolute;
+    top: 10%;
+    left: 50%;
+    transform: translate(-50%, -50%) rotate(10deg);
+    width: 240px;
 }

@@ -27,7 +27,7 @@ export class HomeComponent implements OnInit {
   ) {}
 
   async ngOnInit(): Promise<void> {
-    await this.getdata();        
+    await this.getdata();
   }
 
   logout() {
@@ -42,7 +42,7 @@ export class HomeComponent implements OnInit {
       this.temperatureValue = parseFloat(value.toFixed(2));
     });
     await this.auth.pHValue().subscribe((value: any) => {
-      this.pHValue = parseFloat(value.toFixed(2));
+      this.pHValue = value;
     });
     await this.auth.waterStateHigh().subscribe((state: any) => {
       this.waterStateHigh = state;
@@ -59,51 +59,21 @@ export class HomeComponent implements OnInit {
     }
   }
 
-  fan(event: any) {
-    this.db.object('relaystate/fan').set(event.target.checked);
-  }
-
-  led(event: any) {
-    this.db.object('relaystate/led').set(event.target.checked);
-  }
-  fertilizers(event: any) {
-    this.db.object('relaystate/fertilizers').set(event.target.checked);
-  }
-  microbial(event: any) {
-    this.db.object('relaystate/microbial').set(event.target.checked);
-  }
-  pumpStirring(event: any) {
-    this.db.object('relaystate/pumpStirring').set(event.target.checked);
-  }
-  pumpUP(event: any) {
-    this.db.object('relaystate/pumpUP').set(event.target.checked);
-  }
-  pumpphDown(event: any) {
-    this.db.object('relaystate/pumpphDown').set(event.target.checked);
-  }
-  pumpphUP(event: any) {
-    this.db.object('relaystate/pumpphUP').set(event.target.checked);
-  }
-  pumpwater(event: any) {
-    this.db.object('relaystate/pumpwater').set(event.target.checked);
-  }
-  sprinkler_fertilizers(event: any) {
-    this.db.object('relaystate/sprinklerfertilizers').set(event.target.checked);
-  }
-  sprinkler_water(event: any) {
-    this.db.object('relaystate/sprinklerwater').set(event.target.checked);
-  }
-  valve(event: any) {
-    this.db.object('relaystate/valve').set(event.target.checked);
-  }
-
   testnoti(): void {
     const message = 'สวัสดี';
     this.lineMessageService.sendNotificationAndSaveToDatabase(message);
   }
 
-  // connectLineNotify() {
-  //   window.location.href =
-  //     'https://notify-bot.line.me/oauth/authorize?response_type=code&client_id=<YOUR_CLIENT_ID>&redirect_uri=<YOUR_REDIRECT_URI>&scope=notify&state=<YOUR_STATE>';
-  // }
+  openRelay() {
+    window.location.href = '/relay'
+  }
+  openQuantity() {
+    window.location.href = '/quantity'
+  }
+  openSprinker() {
+    window.location.href = '/sprinker'
+  }
+  openSetTime() {
+    window.location.href = '/set-time'
+  }
 }

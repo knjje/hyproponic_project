@@ -21,4 +21,7 @@ export class OutletComponent implements OnInit {
   logout(){
     this.auth.logout();
     }
-}
+
+    toggleSidebar() {
+        this.auth.toggleSidebar();
+      }}
