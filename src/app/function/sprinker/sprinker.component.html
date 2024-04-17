@@ -3,7 +3,9 @@
     <p class="f-40 fw-700 text-center">Sprinker</p>
   </div>
   <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12">
-    <p class="f-28 fw-500 c-red text-center">*หากเลือกพ่นตามปริมาตรให้กดปุ่ม Submit เมื่อทำการเลือกเรียบร้อย</p>
+    <p class="f-28 fw-500 c-red text-center">
+      *หากเลือกพ่นตามปริมาณให้กดปุ่ม Submit เมื่อทำการเลือกเรียบร้อย
+    </p>
   </div>
 </div>
 
@@ -11,24 +13,24 @@
   <div class="col-xl-3 col-lg-3 col-md-6 col-sm-6 container mb-4">
     <div class="card">
       <div class="imgBx">
-        <img src="assets\icon\ph-meter_6355268.png" class="img3" />
+        <img src="assets\icon\water-hose_5601403.png" class="img1" />
       </div>
       <div class="contentBx">
         <h2 class="mb-2">Sprinker Water</h2>
         <div class="col">
           <button
-            class="btn"
+            class="btn-time"
             (click)="openWater(true)"
-            [class.active]="openWT == true"
+            [class.active-y]="openWT == true"
           >
             เปิดใช้งาน
           </button>
         </div>
         <div class="col">
           <button
-            class="btn"
+            class="btn-time"
             (click)="openWater(false)"
-            [class.active]="openWT == false"
+            [class.active-y]="openWT == false"
           >
             ปิดใช้งาน
           </button>
@@ -40,24 +42,24 @@
   <div class="col-xl-3 col-lg-3 col-md-6 col-sm-6 container mb-4">
     <div class="card">
       <div class="imgBx">
-        <img src="assets\icon\ph-meter_6355268.png" class="img3" />
+        <img src="assets\icon\spray_13327187.png" class="img2" />
       </div>
       <div class="contentBx">
         <h2 class="mb-2">Sprinker fertilizer</h2>
         <div class="col">
           <button
-            class="btn"
+            class="btn-time"
             (click)="openFer(true)"
-            [class.active]="openFT == true"
+            [class.active-y]="openFT == true"
           >
             เปิดใช้งาน
           </button>
         </div>
         <div class="col">
           <button
-            class="btn"
+            class="btn-time"
             (click)="openFer(false)"
-            [class.active]="openFT == false"
+            [class.active-y]="openFT == false"
           >
             ปิดใช้งาน
           </button>
@@ -69,10 +71,10 @@
   <div class="col-xl-3 col-lg-3 col-md-6 col-sm-6 container mb-4">
     <div class="card">
       <div class="imgBx">
-        <img src="assets\icon\fertilizer_2674327.png" class="img1" />
+        <img src="assets\icon\sprinkler_4175992.png" class="img3" />
       </div>
       <div class="contentBx">
-        <h2>Sprinker Water</h2>
+        <h2 class="mb-2">Sprinker Water</h2>
         <div class="col">
           <button class="btn" (click)="SW(250)" [class.active]="sw == 13">
             250 ml
@@ -90,10 +92,10 @@
   <div class="col-xl-3 col-lg-3 col-md-6 col-sm-6 container mb-4">
     <div class="card">
       <div class="imgBx">
-        <img src="assets\icon\ph-meter_6355268.png" class="img4" />
+        <img src="assets\icon\fertilizer_3319199.png" class="img4" />
       </div>
       <div class="contentBx">
-        <h2>Sprinker fertilizer</h2>
+        <h2 class="mb-2">Sprinker fertilizer</h2>
         <div class="col">
           <button class="btn" (click)="SF(250)" [class.active]="sf == 13">
             250 ml
@@ -109,37 +111,64 @@
   </div>
 </div>
 
-<div class="row mt-3">
+<div class="row mt-3 mb-4">
   <div class="col-6"></div>
-  <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 justify-content-center d-flex">
+  <div
+    class="col-xl-6 col-lg-6 col-md-12 col-sm-12 justify-content-center d-flex"
+  >
     <button class="btn-confirm reset" (click)="reset()">reset</button>
     <button class="btn-confirm submit" (click)="submit()">submit</button>
   </div>
 </div>
 
-
-<div class="row mt-4 mb-4">
+<div class="row mt-4 mb-3">
   <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 mb-3">
     <p class="f-40 fw-700 text-center">ตั้งเวลาเปิด Sprinker</p>
   </div>
 </div>
 
-
-
-<div class="row">
-  <div class="col">
-    <span>sprinker_FT:</span>&nbsp;
-    <span>{{ sprinker_FT }}</span>
-    <span>{{ time_FT }}</span>
-    <input type="time" [(ngModel)]="time_FT" />
-    <button (click)="sendTime()">click</button>
+<div class="row mt-3">
+  <div class="col-xl-3 col-lg-3 col-md-12 col-sm-12"></div>
+  <div class="col-xl-3 col-lg-3 col-md-6 col-sm-6 container mb-4">
+    <div class="card">
+      <div class="imgBx">
+        <img src="assets\icon\hourglass_6290515.png" class="img5" />
+      </div>
+      <div class="contentBx">
+        <h2 class="mb-2">ตั้งเวลาเปิดที่พ่นน้ำ</h2>
+        <div class="col mb-2">
+          <input type="time" [(ngModel)]="time_WT" />
+        </div>
+        <div class="col">
+          <button class="btn-submit submit" (click)="sendTime()">ตั้งเวลา</button>
+        </div>
+      </div>
+    </div>
   </div>
+
+  <div class="col-xl-3 col-lg-3 col-md-6 col-sm-6 container mb-4">
+    <div class="card">
+      <div class="imgBx">
+        <img src="assets\icon\clock_2997985.png" class="img6" />
+      </div>
+      <div class="contentBx">
+        <h2 class="mb-2">ตั้งเวลาเปิดที่พ่นปุ๋ย</h2>
+        <div class="col mb-2">
+          <input type="time" [(ngModel)]="time_FT" />
+        </div>
+        <div class="col">
+          <button class="btn-submit submit" (click)="sendTime()">ตั้งเวลา</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="col-xl-3 col-lg-3 col-md-6 col-sm-6"></div>
 </div>
-<div class="row">
-  <div class="col">
-    <span>sprinker_WT:</span>&nbsp;
-    <span>{{ sprinker_WT }}</span>
-    <input type="time" [(ngModel)]="time_WT" />
-    <button (click)="sendTime()">click</button>
+
+<div class="row mt-3 mb-4">
+  <div
+    class="col-xl-12 col-lg-12 col-md-12 col-sm-12 justify-content-center d-flex"
+  >
+    <button class="btn-submit-time" (click)="sendTime()">ตั้งเวลาทั้งหมด</button>
   </div>
 </div>

@@ -14,14 +14,16 @@ import { SettingTimeComponent } from './function/setting-time/setting-time.compo
 
 const routes: Routes = [
   { path: '', redirectTo: 'login', pathMatch: 'full' },
-  {
-    path: '',
-    component: LoginOutletComponent,
-    children: [
-      { path: 'login', component: LoginComponent },
-      { path: 'register', component: RegisterComponent },
-    ],
-  },
+  { path: 'login', component: LoginComponent },
+
+  // {
+  //   path: '',
+  //   component: LoginOutletComponent,
+  //   children: [
+  //     { path: 'login', component: LoginComponent },
+  //     { path: 'register', component: RegisterComponent },
+  //   ],
+  // },
   {
     path: '',
     component: MainComponent,

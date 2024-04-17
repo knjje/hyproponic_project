@@ -399,7 +399,7 @@ input:checked+.slider:before {
 }
 
 .submit {
-    background-color: #1eee33;
+    background-color: #105b14;
     color: white;
 }
 
@@ -411,4 +411,41 @@ input:checked+.slider:before {
 .submit:active {
     background-color: #19c82a;
     color: white;
+}
+
+.btn-submit-time{
+    width: 220px;
+    height: 55px;
+    border-radius: 30px;
+    border: 3px;
+    margin: 4px;
+    font-weight: 600;
+    font-size: 25px;
+    background-color: #605f6a;
+    color: white;
+}
+
+.btn-submit-time:hover {
+    background-color: #3c3c3c;
+    color: #ffffff;
+}
+
+.btn-submit-time:active{
+    background-color: #3c3c3c;
+    color: #ffffff;
+}
+
+.btn-time {
+    width: 130px;
+    height: 40px;
+    border-radius: 30px;
+    border: 3px;
+    border: 3px solid #000000;
+    margin: 4px;
+    background-color: white;
+}
+
+.btn-time:hover {
+    background-color: #ee2761;
+    color: #ffffff;
 }

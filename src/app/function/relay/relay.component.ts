@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthService } from 'src/app/service/auth.service';
-import { environment } from 'src/environments/environment';
 import { AngularFireDatabase } from '@angular/fire/compat/database';
 
 @Component({
@@ -8,7 +7,7 @@ import { AngularFireDatabase } from '@angular/fire/compat/database';
   templateUrl: './relay.component.html',
   styleUrls: ['./relay.component.css'],
 })
-export class RelayComponent {
+export class RelayComponent implements OnInit {
   data: any = {
     sft: '',
     swt: '',
@@ -28,6 +27,7 @@ export class RelayComponent {
   PhU: any;
   FT: any;
   MB: any;
+  Valve: any;
   constructor(private auth: AuthService, private db: AngularFireDatabase) {}
 
   async ngOnInit(): Promise<void> {
@@ -36,10 +36,6 @@ export class RelayComponent {
   }
 
   getData() {
-
-
-
-
     let pumpStirring = this.db.object('relaystate/pumpStirring').valueChanges();
     pumpStirring.subscribe((state: any) => {
       this.updateSwitchState('pumpStirring', state);
@@ -49,19 +45,9 @@ export class RelayComponent {
     pumpUP.subscribe((state: any) => {
       this.updateSwitchState('pumpUP', state);
     });
-
-
-
-
-
-    let valve = this.db.object('relaystate/valve').valueChanges();
-    valve.subscribe((state: any) => {
-      this.updateSwitchState('valve', state);
-    });
   }
 
-
-  getDataFromRD(){
+  getDataFromRD() {
     let fan = this.db.object('relaystate/fan').valueChanges();
     fan.subscribe((state: any) => {
       this.Fan = state;
@@ -77,28 +63,30 @@ export class RelayComponent {
       this.Pwater = state;
     });
 
-    
     let pumpphDown = this.db.object('relaystate/pumpphDown').valueChanges();
     pumpphDown.subscribe((state: any) => {
-      this.PhD = state
+      this.PhD = state;
     });
 
     let pumpphUP = this.db.object('relaystate/pumpphUP').valueChanges();
     pumpphUP.subscribe((state: any) => {
-      this.PhU = state
+      this.PhU = state;
     });
 
     let fertilizers = this.db.object('relaystate/fertilizers').valueChanges();
     fertilizers.subscribe((state: any) => {
-      this.FT = state
+      this.FT = state;
     });
 
     let microbial = this.db.object('relaystate/microbial').valueChanges();
     microbial.subscribe((state: any) => {
-      this.MB = state
+      this.MB = state;
     });
 
-    
+    let valve = this.db.object('relaystate/valve').valueChanges();
+    valve.subscribe((state: any) => {
+      this.Valve = state;
+    });
   }
 
   updateSwitchState(switchId: string, state: boolean) {
@@ -108,7 +96,6 @@ export class RelayComponent {
     }
   }
 
-
   async sendTime() {
     this.data.ft = this.time_FT;
     this.data.mb = this.time_MB;
@@ -116,7 +103,7 @@ export class RelayComponent {
     this.data.phD = this.time_PHD;
 
     let res: any = await this.auth.Post('updateByTime', this.data);
-    if (res.status_code == 200) {
+    if (res.status == 200) {
       this.auth.Swal('ทำรายการสำเร็จ', 'success');
     } else {
       this.auth.Swal('ทำรายการไม่สำเร็จ', 'error');
@@ -157,5 +144,10 @@ export class RelayComponent {
   openPhD(state: any) {
     this.PhD = state;
     this.db.object('relaystate/pumpphDown').set(this.PhD);
+  }
+
+  openValve(state: any) {
+    this.Valve = state;
+    this.db.object('relaystate/valve').set(this.Valve);
   }
 }

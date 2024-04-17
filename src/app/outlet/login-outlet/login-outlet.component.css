@@ -1,0 +1,13 @@
+.body  {
+    height: 100%;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-color: #A1BE32 !important;
+    z-index: 999;
+}
+.bg-blen{
+    flex-direction: column;
+    height: 100vh;
+    position: absolute;
+
+}

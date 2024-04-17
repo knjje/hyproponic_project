@@ -90,6 +90,7 @@ import { SprinkerComponent } from './function/sprinker/sprinker.component';
 import { SideNavComponent } from './outlet/side-nav/side-nav.component';
 import { MainComponent } from './outlet/main/main.component';
 import { SettingTimeComponent } from './function/setting-time/setting-time.component';
+import {NgxMaterialTimepickerModule} from 'ngx-material-timepicker';
 @NgModule({
   declarations: [
     AppComponent,
@@ -155,6 +156,7 @@ import { SettingTimeComponent } from './function/setting-time/setting-time.compo
     MatRadioModule,
     AngularFireModule.initializeApp(environment.firebase),
     AngularFirestoreModule,
+    NgxMaterialTimepickerModule
   ],
   providers: [],
   bootstrap: [AppComponent],

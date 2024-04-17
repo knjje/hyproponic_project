@@ -1,0 +1,143 @@
+@media (max-width: 550px) {
+    .f-40 {
+      font-size: 30px;
+    }
+    .f-28 {
+      font-size: 18px;
+    }
+  }
+.container {
+    position: relative;
+    display: flex;
+    justify-content: center;
+}
+
+.container .card {
+    position: relative;
+    width: 320px;
+    height: 450px;
+    background: #fef795;
+    border-radius: 20px;
+    overflow: hidden;
+}
+
+.container .card:before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: #f6a1af;
+    clip-path: circle(150px at 80% 20%);
+    transition: 0.5s ease-in-out;
+}
+
+.container .card:hover:before {
+    clip-path: circle(300px at 80% -20%);
+}
+
+
+.container .card .imgBx {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 10000;
+    width: 100%;
+    height: 220px;
+    transition: 0.5s;
+}
+
+.container .card .contentBx {
+    position: absolute;
+    bottom: -65px;
+    width: 100%;
+    height: 240px;
+    text-align: center;
+    transition: 1s;
+    z-index: 10;
+}
+
+.container .card:hover .contentBx {
+    height: 240px;
+}
+
+.container .card .contentBx h2 {
+    position: relative;
+    font-weight: 600;
+    letter-spacing: 1px;
+    color: #000000;
+    margin: 0;
+}
+
+.container .card:hover .imgBx {
+    top: 24%;
+    transform: translateY(0%);
+}
+
+.container .card .imgBx img {
+    position: absolute;
+    top: 30%;
+    left: 50%;
+    transform: translate(-50%, -50%) rotate(-25deg);
+    width: 250px;
+}
+.container .card .imgBx .img1 {
+    position: absolute;
+    top: 15%;
+    left: 47%;
+    transform: translate(-50%, -50%) rotate(-20deg);
+    width: 230px;
+}
+.container .card .imgBx .img2 {
+    position: absolute;
+    top: 19%;
+    left: 57%;
+    transform: translate(-50%, -50%) rotate(19deg);
+    width: 215px;
+}
+.container .card .imgBx .img3 {
+    position: absolute;
+    top: 11%;
+    left: 50%;
+    transform: translate(-50%, -50%) rotate(-13deg);
+    width: 210px;
+}
+.container .card .imgBx .img4 {
+    position: absolute;
+    top: 15%;
+    left: 50%;
+    transform: translate(-50%, -50%) rotate(10deg);
+    width: 221px;
+}
+
+.btn-submit{
+    width: 130px;
+    height: 40px;
+    border-radius: 30px;
+    border: 3px;
+    margin: 4px;
+    font-weight: 600;
+    font-size: 20px;
+    background-color: #ee2761;
+    border: 3px solid #000000;
+    color: #ffffff;
+}
+
+.btn-submit:hover{
+    background-color: #cd1045;
+    color: #ffffff;
+}
+
+input{
+    border-radius: 32px;
+    cursor: pointer;
+    padding: 10px;
+    text-align: center;
+    width: 220px;
+}
+
+
+
+
+

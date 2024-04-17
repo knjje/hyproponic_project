@@ -188,4 +188,5 @@ export class SprinkerComponent implements OnInit {
 
     this.db.object('relaystate/sprinklerfertilizers').set(this.openFT);
   }
+  
 }

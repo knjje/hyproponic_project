@@ -1,1 +1,84 @@
-<p>setting-time works!</p>
+<div class="row mt-4 mb-4">
+  <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 mb-3">
+    <p class="f-40 fw-700 text-center">ตั้งเวลาการทำงานของอุปกรณ์</p>
+  </div>
+</div>
+
+<div class="row mt-3">
+  <div class="col-xl-3 col-lg-3 col-md-6 col-sm-6 container mb-4">
+    <div class="card">
+      <div class="imgBx">
+        <img src="assets\icon\seed-bag_11504622.png" class="img1" />
+      </div>
+      <div class="contentBx">
+        <h2 class="mb-2">ตั้งเวลาเติมปุ๋ย</h2>
+        <div class="col mb-2">
+          <input type="time" [(ngModel)]="time_FT" />
+        </div>
+        <div class="col">
+          <button class="btn-submit" (click)="sendTime()">ตั้งเวลา</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="col-xl-3 col-lg-3 col-md-6 col-sm-6 container mb-4">
+    <div class="card">
+      <div class="imgBx">
+        <img src="assets\icon\drug_8461645.png" class="img2" />
+      </div>
+      <div class="contentBx">
+        <h2 class="mb-2">ตั้งเวลาเติมสารอาหาร</h2>
+        <div class="col mb-2">
+          <input type="time" [(ngModel)]="time_MB" />
+        </div>
+        <div class="col">
+          <button class="btn-submit" (click)="sendTime()">ตั้งเวลา</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="col-xl-3 col-lg-3 col-md-6 col-sm-6 container mb-4">
+    <div class="card">
+      <div class="imgBx">
+        <img src="assets\icon\flask_882980.png" class="img3" />
+      </div>
+      <div class="contentBx">
+        <h2 class="mb-2">ตั้งเวลาเติมค่าเพิ่ม Ph</h2>
+        <div class="col mb-2">
+          <input type="time" [(ngModel)]="time_PHU" />
+        </div>
+        <div class="col">
+          <button class="btn-submit" (click)="sendTime()">ตั้งเวลา</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="col-xl-3 col-lg-3 col-md-6 col-sm-6 container mb-4">
+    <div class="card">
+      <div class="imgBx">
+        <img src="assets\icon\cl_8357130.png" class="img4" />
+      </div>
+      <div class="contentBx">
+        <h2 class="mb-2">ตั้งเวลาเติมค่าลด Ph</h2>
+        <div class="col mb-2">
+          <input type="time" [(ngModel)]="time_PHD" />
+        </div>
+        <div class="col">
+          <button class="btn-submit" (click)="sendTime()">ตั้งเวลา</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<div class="row mt-3 mb-4">
+  <div
+    class="col-xl-12 col-lg-12 col-md-12 col-sm-12 justify-content-center d-flex"
+  >
+    <button class="btn-submit-time" (click)="sendTime()">ตั้งเวลาทั้งหมด</button>
+  </div>
+</div>
