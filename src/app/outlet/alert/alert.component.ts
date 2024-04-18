@@ -30,16 +30,7 @@ export class AlertComponent {
   constructor(public dialogRef: MatDialogRef<AlertComponent>) {
     dialogRef.disableClose = true;
   }
-  ngOnInit(): void {
-    if (this.data.confirmButton) {
-      this.data.cancleButton = true;
-    }
-
-    if (!this.data.cancleButtonText) {
-      this.data.cancleButtonText = 'ยกเลิก';
-    }
-    this.getclass(this.data.status);
-  }
+  ngOnInit(): void {}
   
   submit(): void {
     this.dialogRef.close({
@@ -53,20 +44,5 @@ export class AlertComponent {
     });
   }
 
-  getclass(status: any) {
-    if (status == 'success') {
-      this.imgStatus = '../../../../assets/imgs/checked 1.png';
-      this.textStatus = 'text-transection text-complete';
-      this.headClass = 'modal-header-bg-success';
-    } else if (status == 'error') {
-      this.imgStatus = '../../../../assets/imgs/cancel 1.png';
-      this.textStatus = 'text-transection text-cancle';
-      this.headClass = 'modal-header-bg-error';
-    } else {
-      this.imgStatus = '../../../../assets/imgs/delete 1.png';
-      this.textStatus = 'text-transection text-cancle';
-      this.btnClass = 'modal-alert-btn-black';
-      this.headClass = 'modal-header-bg-light';
-    }
-  }
+
 }

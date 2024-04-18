@@ -9,22 +9,12 @@ import { AuthService } from 'src/app/service/auth.service';
 export class LoginComponent implements OnInit {
   email: any;
   password: any;
-
   constructor(private auth: AuthService) {}
 
   ngOnInit(): void {}
 
   login() {
-    if (this.email == '') {
-      alert('Please enter email');
-    }
-
-    if (this.email == '') {
-      alert('Please enter email');
-    }
     this.auth.login(this.email, this.password);
-    this.email = '';
-    this.password = '';
   }
 
   GoRegister() {
@@ -33,9 +23,9 @@ export class LoginComponent implements OnInit {
 
   switch(): void {
     const switchers = Array.from(document.querySelectorAll('.switcher'));
-  
+
     switchers.forEach((item) => {
-      item.addEventListener('click', function(this: HTMLElement) {
+      item.addEventListener('click', function (this: HTMLElement) {
         switchers.forEach((item) =>
           item.parentElement?.classList.remove('is-active')
         );
@@ -43,5 +33,4 @@ export class LoginComponent implements OnInit {
       });
     });
   }
-  
 }

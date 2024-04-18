@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { AuthService } from 'src/app/service/auth.service';
 import { environment } from 'src/environments/environment';
 import { AngularFireDatabase } from '@angular/fire/compat/database';
-import { LineMessageService } from 'src/app/service/line-message.service';
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
@@ -23,7 +22,6 @@ export class HomeComponent implements OnInit {
   constructor(
     private auth: AuthService,
     private db: AngularFireDatabase,
-    private lineMessageService: LineMessageService
   ) {}
 
   async ngOnInit(): Promise<void> {
@@ -57,11 +55,6 @@ export class HomeComponent implements OnInit {
     if (switchElement) {
       switchElement.checked = state;
     }
-  }
-
-  testnoti(): void {
-    const message = 'สวัสดี';
-    this.lineMessageService.sendNotificationAndSaveToDatabase(message);
   }
 
   openRelay() {

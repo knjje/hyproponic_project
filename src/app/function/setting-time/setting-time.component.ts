@@ -9,8 +9,6 @@ import { AuthService } from 'src/app/service/auth.service';
 })
 export class SettingTimeComponent implements OnInit {
   data: any = {
-    sft: '',
-    swt: '',
     ft: '',
     mb: '',
     phU: '',
@@ -23,7 +21,9 @@ export class SettingTimeComponent implements OnInit {
 
   constructor(private auth: AuthService, private db: AngularFireDatabase) {}
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.getTime()
+  }
 
   async sendTime() {
     this.data.ft = this.time_FT;
@@ -31,12 +31,55 @@ export class SettingTimeComponent implements OnInit {
     this.data.phU = this.time_PHU;
     this.data.phD = this.time_PHD;
 
-    let res: any = await this.auth.Post('updateByTime', this.data);
-    if (res.status_code == 200) {
-      this.auth.Swal('ทำรายการสำเร็จ', 'success');
-    } else {
-      this.auth.Swal('ทำรายการไม่สำเร็จ', 'error');
-    }
+    this.db
+    .object('timeFT')
+    .set(this.time_FT)
+    .then(() => console.log('set time success'))
+    .catch((error) =>
+      console.error('Error updating value in Firebase:', error)
+    );
+
+    this.db
+    .object('timeMB')
+    .set(this.time_MB)
+    .then(() => console.log('set time success'))
+    .catch((error) =>
+      console.error('Error updating value in Firebase:', error)
+    );
+
+    this.db
+    .object('timePHU')
+    .set(this.time_PHU)
+    .then(() => console.log('set time success'))
+    .catch((error) =>
+      console.error('Error updating value in Firebase:', error)
+    );
+
+    this.db
+    .object('timePHD')
+    .set(this.time_PHD)
+    .then(() => console.log('set time success'))
+    .catch((error) =>
+      console.error('Error updating value in Firebase:', error)
+    );
+
+    let res: any = await this.auth.Post('updateCron', this.data);
     console.log(this.data);
+  }
+
+
+  getTime() {
+    this.auth.timeFT().subscribe((time: any) => {
+      this.time_FT = time;
+    });
+    this.auth.timeMB().subscribe((time: any) => {
+      this.time_MB = time;
+    });
+    this.auth.timePHU().subscribe((time: any) => {
+      this.time_PHU = time;
+    });
+    this.auth.timePHD().subscribe((time: any) => {
+      this.time_PHD = time;
+    });
   }
 }

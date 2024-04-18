@@ -11,19 +11,21 @@ import { SprinkerComponent } from './function/sprinker/sprinker.component';
 import { MainComponent } from './outlet/main/main.component';
 import { SideNavComponent } from './outlet/side-nav/side-nav.component';
 import { SettingTimeComponent } from './function/setting-time/setting-time.component';
+import { authGuard } from './service/auth.guard';
 
 const routes: Routes = [
-  { path: '', redirectTo: 'login', pathMatch: 'full' },
-  { path: 'login', component: LoginComponent },
+  { path: '', redirectTo: '/login', pathMatch: 'full' },
+  {
+    path: 'login',
+    component: LoginOutletComponent,
+    children: [{ path: '', component: LoginComponent }],
+  },
+  {
+    path: 'register',
+    component: LoginOutletComponent,
+    children: [{ path: '', component: RegisterComponent }],
+  },
 
-  // {
-  //   path: '',
-  //   component: LoginOutletComponent,
-  //   children: [
-  //     { path: 'login', component: LoginComponent },
-  //     { path: 'register', component: RegisterComponent },
-  //   ],
-  // },
   {
     path: '',
     component: MainComponent,

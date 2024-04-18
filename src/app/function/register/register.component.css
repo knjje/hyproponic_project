@@ -1,0 +1,38 @@
+.container {
+	position: relative;
+	display: flex;
+	justify-content: center;
+  }
+  
+  .container .card {
+	position: relative;
+    width: 570px;
+    height: 580px;
+	background: #ffffff;
+	border-radius: 20px;
+	overflow: hidden;
+	padding: 10px;
+  }
+
+  .container .card .contentBx {
+    position: absolute;
+    bottom: 170px;
+    width: 70%;
+    height: 310px;
+    text-align: center;
+    transition: 1s;
+    z-index: 10;
+    left: 84px;
+  }
+  
+  .container .card .contentBx h1 {
+	position: relative;
+	font-weight: 700;
+	letter-spacing: 2px;
+	color: #000000;
+	margin: 0;
+	font-size: 28px;
+  }
+  
+  
+  

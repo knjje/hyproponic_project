@@ -188,7 +188,7 @@ body {
 }
 
 .c-g {
-    color: #00B112;
+    color: #15BC11;
 }
 
 .c-red {
@@ -197,6 +197,10 @@ body {
 
 .c-green {
     color: #7c9713;
+}
+
+.c-orange {
+    color: #e24902;
 }
 
 .f-50 {

@@ -4,9 +4,9 @@ import { AngularFireDatabase } from '@angular/fire/compat/database';
 import { Router } from '@angular/router';
 import { environment } from 'src/environments/environment.development';
 import Swal from 'sweetalert2';
-import { AlertComponent } from '../outlet/alert/alert.component';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { BehaviorSubject } from 'rxjs';
+import { User } from 'firebase/auth';
 
 import {
   MatDialog,
@@ -29,15 +29,42 @@ export class AuthService {
     private http: HttpClient
   ) {}
 
+
+
+
   //login
   login(email: string, password: string) {
     this.fireauth.signInWithEmailAndPassword(email, password).then(
       () => {
         localStorage.setItem('token', 'true');
-        this.router.navigate(['home']);
+        this.router.navigate(['/home']);
       },
       (err) => {
-        alert(err.message);
+        let msg = err.message;
+        console.log(msg);
+        if (msg == 'Firebase: Error (auth/missing-email).') {
+          this.Swal('กรุณากรอกอีเมลให้ถูกต้อง', 'error');
+        } else if (
+          msg ==
+          'Firebase: The email address is badly formatted. (auth/invalid-email).'
+        ) {
+          this.Swal('กรุณากรอกอีเมลให้ถูกต้อง', 'error');
+        } else if (
+          msg ==
+          'Firebase: The supplied auth credential is incorrect, malformed or has expired. (auth/invalid-credential).'
+        ) {
+          this.Swal('ไม่สามารถเข้าสู่ระบบได้', 'error');
+        } else if (
+          msg ==
+          'Firebase: A non-empty password must be provided (auth/missing-password).'
+        ) {
+          this.Swal('กรุณากรอกรหัสผ่าน', 'error');
+        } else if (
+          msg ==
+          'Firebase: This operation is restricted to administrators only. (auth/admin-restricted-operation).'
+        ) {
+          this.Swal('กรุณากรอกข้อมูล', 'error');
+        }
         this.router.navigate(['/login']);
       }
     );
@@ -47,11 +74,35 @@ export class AuthService {
   register(email: string, password: string) {
     this.fireauth.createUserWithEmailAndPassword(email, password).then(
       () => {
-        alert('Register Successful');
+        this.Swal('สร้างบัญชีสำเร็จ', 'success');
         this.router.navigate(['/login']);
       },
       (err) => {
-        alert(err.message);
+        let msg = err.message;
+        console.log(msg);
+        if (msg == 'Firebase: Error (auth/missing-email).') {
+          this.Swal('กรุณากรอกอีเมลให้ถูกต้อง', 'error');
+        } else if (
+          msg ==
+          'Firebase: The email address is badly formatted. (auth/invalid-email).'
+        ) {
+          this.Swal('กรุณากรอกอีเมลให้ถูกต้อง', 'error');
+        } else if (
+          msg ==
+          'Firebase: Password should be at least 6 characters (auth/weak-password).'
+        ) {
+          this.Swal('กรุณากรอกรหัสผ่านอย่างน้อย 6 ตัว', 'error');
+        } else if (
+          msg ==
+          'Firebase: A non-empty password must be provided (auth/missing-password).'
+        ) {
+          this.Swal('กรุณากรอกรหัสผ่าน', 'error');
+        } else if (
+          msg ==
+          'Firebase: This operation is restricted to administrators only. (auth/admin-restricted-operation).'
+        ) {
+          this.Swal('กรุณากรอกข้อมูล', 'error');
+        }
         this.router.navigate(['/register']);
       }
     );
@@ -86,107 +137,49 @@ export class AuthService {
   waterStateHigh() {
     return this.db.object('waterstatehigh').valueChanges();
   }
+  timeSFT() {
+    return this.db.object('timeSFT').valueChanges();
+  }
+  timeSWT() {
+    return this.db.object('timeSWT').valueChanges();
+  }
   timeFT() {
     return this.db.object('timeFT').valueChanges();
   }
-
-  startCountdown(endTime: any, sprinker_FT: any): void {
-    console.log(sprinker_FT);
-    console.log(endTime);
-
-    const setTime = new Date();
-    const timeArray = endTime.split(':');
-    setTime.setHours(parseInt(timeArray[0]));
-    setTime.setMinutes(parseInt(timeArray[1]));
-
-    const currentMilliseconds = new Date().getTime();
-    let timeDifference = setTime.getTime() - currentMilliseconds;
-
-    console.log('setTimeMilliseconds', timeArray);
-    console.log('currentMilliseconds', currentMilliseconds);
-    console.log('timeDifference', timeDifference);
-    if (timeDifference > 0) {
-      this.db
-        .object('difFT')
-        .set(timeDifference)
-        .then(() => console.log('set time success'))
-        .catch((error) =>
-          console.error('Error updating value in Firebase:', error)
-        );
-
-      const countdownInterval = setInterval(() => {
-        timeDifference -= 1000;
-        if (timeDifference <= 0) {
-          clearInterval(countdownInterval);
-          this.db.object('relaystate/sprinklerfertilizers').set(!sprinker_FT);
-        } else {
-          this.db.object('difFT').set(timeDifference);
-        }
-      }, 1000);
-    } else {
-      this.db.object('relaystate/sprinklerfertilizers').set(sprinker_FT);
-    }
+  timeMB() {
+    return this.db.object('timeMB').valueChanges();
   }
+  timePHU() {
+    return this.db.object('timePHU').valueChanges();
+  }
+  timePHD() {
+    return this.db.object('timePHD').valueChanges();
+  }
+
 
   async Swal(title: any, icon: any, text = '', callback = '', color = '') {
     await Swal.fire({
       title: `<b style="color:${color};" class="fs-3">${title}</b>`,
       text: text,
-      confirmButtonText: 'ตกลง',
-      confirmButtonColor: '#19c82a',
-      showConfirmButton: true,
+      reverseButtons: true,
       showCloseButton: true,
+      confirmButtonColor: '#00C514',
       icon: icon,
+      confirmButtonText: 'ยืนยัน',
       customClass: {
         // actions: 'my-actions',
-        cancelButton: 'reset',
-        confirmButton: 'submit',
+        confirmButton: 'alert-btn-confirm',
       },
-    }).then((result: any) => {
+    }).then(async (result) => {
       if (callback) {
         window.location.href = `./${callback}`;
       }
     });
   }
 
-  alertPopUp({
-    title = '',
-    text = '',
-    status = '',
-    redirectLink = null,
-    textButton = 'เสร็จสิ้น',
-    cancleButton = false,
-    confirmButton = false,
-    cancleButtonText = 'ยกเลิก',
-    width = 40,
-  }) {
-    const dialogRef = this.dialog.open(AlertComponent, {
-      width: `${width}vw`,
-      autoFocus: false,
-      disableClose: true,
-    });
-
-    dialogRef.componentInstance.data = {
-      title: title,
-      text: text,
-      status: status,
-      textButton: textButton,
-      cancleButton: cancleButton,
-      confirmButton: confirmButton,
-      cancleButtonText: cancleButtonText,
-    };
-
-    dialogRef.afterClosed().subscribe(async (result) => {
-      if (result.isResult) {
-        if (redirectLink) {
-          window.location.href = `./${redirectLink}`;
-        }
-      }
-    });
-  }
 
   async Post(path: any, data: any, paramHeader = null): Promise<any> {
-    const body = data ;
+    const body = data;
 
     try {
       const response = await this.http
@@ -210,11 +203,6 @@ export class AuthService {
         }
       );
     });
-  }
-
-  calculateTimeDifference(savedTime: number): number {
-    const currentTime = new Date().getTime();
-    return savedTime - currentTime;
   }
 
   private sidebarVisibilitySubject = new BehaviorSubject<boolean>(false);

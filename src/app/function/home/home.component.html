@@ -1,4 +1,27 @@
-<div class="row">
+<!-- <div class="imgBx">
+        <img src="assets\icon\3.png" class="img1" />
+      </div>
+      <div class="contentBx">
+        <h1 class="mb-2">ระดับน้ำในถัง</h1>
+        <div class="col">
+          <p class="f-50 fw-700 mb-4 l-h3"
+          [class.c-red]="waterStateHigh == false && waterStateLow == false"
+          [class.c-orange]="waterStateHigh == false && waterStateLow == true"
+          [class.c-green]="waterStateHigh == true && waterStateLow == true">
+            {{
+              waterStateHigh == true && waterStateLow == true
+                ? "มากกว่า 80 %"
+                : waterStateHigh == false && waterStateLow == true
+                ? "ต่ำกว่า 80 %"
+                : waterStateHigh == false && waterStateLow == false
+                ? "ต่ำกว่า 10%"
+                : " "
+            }}
+          </p>
+        </div>
+      </div> -->
+
+<div class="row mt-5">
   <div class="col-xl-3 col-lg-3 col-md-12 col-sm-12 container mb-4">
     <div class="card">
       <div class="imgBx">
@@ -13,7 +36,7 @@
     </div>
   </div>
 
-  <div class="col-xl-3 col-lg-3 col-md-6 col-sm-6 container mb-4">
+  <div class="col-xl-3 col-lg-3 col-md-12 col-sm-6 container mb-4">
     <div class="card">
       <div class="imgBx">
         <img src="assets\icon\humidity_4181405.png" class="img3" />
@@ -27,7 +50,7 @@
     </div>
   </div>
 
-  <div class="col-xl-3 col-lg-3 col-md-6 col-sm-6 container mb-4">
+  <div class="col-xl-3 col-lg-3 col-md-12 col-sm-6 container mb-4">
     <div class="card">
       <div class="imgBx">
         <img src="assets\icon\drop_3335624.png" class="img2" />
@@ -44,49 +67,64 @@
   </div>
 </div>
 
-<!-- <div class="row m-0 p-3">
-  <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12 m-0 mb-4">
-    <p class="m-0 box align-items-center d-flex justify-content-center">
-      <span class="f-22 fw-500">ปริมาณน้ำ:</span>&nbsp;
-      <span
-        class="f-22 fw-500"
-        [class.c-red]="waterStateHigh == false"
-        [class.c-green]="waterStateHigh == true"
-        >{{ waterStateHigh == true ? "มากกว่า 80 %" : "ต่ำกว่า 80 %" }}</span
-      >
-    </p>
+<div class="row mb-3">
+  <div
+    class="col-xl-12 col-lg-12 col-md-12 col-sm-12 d-flex justify-content-center"
+  >
+    <div class="space-card">
+      <div class="card3">
+        <div class="slide slide1">
+          <div class="content">
+            <div class="icon">
+              <img src="assets\icon\3.png" style="width: 100%" />
+            </div>
+          </div>
+        </div>
+        <div class="slide slide2">
+          <div class="content">
+            <h3>ระดับน้ำในถัง</h3>
+            <h1
+              [class.c-red]="waterStateHigh == false && waterStateLow == false"
+              [class.c-orange]="
+                waterStateHigh == false && waterStateLow == true
+              "
+              [class.c-green]="waterStateHigh == true && waterStateLow == true"
+            >
+              {{
+                waterStateHigh == true && waterStateLow == true
+                  ? "มากกว่า 80 %"
+                  : waterStateHigh == false && waterStateLow == true
+                  ? "ต่ำกว่า 80 %"
+                  : waterStateHigh == false && waterStateLow == false
+                  ? "ต่ำกว่า 10%"
+                  : " "
+              }}
+            </h1>
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
-  <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12 m-0 mb-4">
-    <p class="m-0 box align-items-center d-flex justify-content-center">
-      <span class="f-22 fw-500">ปริมาณน้ำ:</span>&nbsp;
-      <span
-        class="f-22 fw-500"
-        [class.c-red]="waterStateLow == false"
-        [class.c-green]="waterStateLow == true"
-        >{{ waterStateLow == true ? "มากกว่า 10 %" : "ต่ำกว่า 10 %" }}</span
-      >
-    </p>
-  </div>
-</div> -->
+</div>
 
 <div class="row">
   <div
-    class="col-xl-3 col-lg-3 col-md-3 col-sm-12 d-flex justify-content-center mb-4"
-  >
-    <button class="style-2" (click)="openQuantity()">เติมสารตามปริมาณ</button>
-  </div>
-  <div
-    class="col-xl-3 col-lg-3 col-md-3 col-sm-12 d-flex justify-content-center mb-4"
+    class="col-xl-3 col-lg-3 col-md-6 col-sm-12 d-flex justify-content-center mb-4"
   >
     <button class="style-2" (click)="openRelay()">ใช้งานอุปกรณ์</button>
   </div>
   <div
-    class="col-xl-3 col-lg-3 col-md-3 col-sm-12 d-flex justify-content-center mb-4"
+    class="col-xl-3 col-lg-3 col-md-6 col-sm-12 d-flex justify-content-center mb-4"
   >
     <button class="style-2" (click)="openSprinker()">ใช้งานสปริงเกอร์</button>
   </div>
   <div
-    class="col-xl-3 col-lg-3 col-md-3 col-sm-12 d-flex justify-content-center mb-4"
+    class="col-xl-3 col-lg-3 col-md-6 col-sm-12 d-flex justify-content-center mb-4"
+  >
+    <button class="style-2" (click)="openQuantity()">เติมสารตามปริมาณ</button>
+  </div>
+  <div
+    class="col-xl-3 col-lg-3 col-md-6 col-sm-12 d-flex justify-content-center mb-4"
   >
     <button class="style-2" (click)="openSetTime()">ตั้งค่าเวลาอุปกรณ์</button>
   </div>
