@@ -15,7 +15,43 @@ export class QuantityComponent implements OnInit {
   phUp: any = 0;
   phD: any = 0;
   constructor(private auth: AuthService, private db: AngularFireDatabase) {}
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.getdata();
+  }
+
+  getdata(){
+    let qfer = this.db
+      .object('quantityFT')
+      .valueChanges();
+      qfer.subscribe((state: any) => {
+      this.Fer = state;
+    });
+
+
+    let qmb = this.db
+    .object('quantityMB')
+    .valueChanges();
+    qmb.subscribe((state: any) => {
+    this.Mb = state;
+  });
+
+
+  let qup = this.db
+  .object('quantityphup')
+  .valueChanges();
+  qup.subscribe((state: any) => {
+  this.phUp = state;
+});
+
+
+let qd = this.db
+.object('quantityphdown')
+.valueChanges();
+qd.subscribe((state: any) => {
+this.phD = state;
+});
+
+  }
 
   reset() {
     this.Fer = 0;

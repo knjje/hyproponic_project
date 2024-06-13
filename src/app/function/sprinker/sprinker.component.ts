@@ -30,6 +30,9 @@ export class SprinkerComponent implements OnInit {
   async ngOnInit(): Promise<void> {
     await this.getdata();
     await this.getTime();
+    console.log(this.sw);
+    console.log(this.sf);
+    
   }
 
   reset() {
@@ -37,6 +40,31 @@ export class SprinkerComponent implements OnInit {
     this.sw = 0;
   }
 
+  async resetWT(){
+    this.time_WT=''
+
+    this.db
+    .object('timeSWT')
+    .set(this.time_WT)
+    .then(() => console.log('set time success'))
+    .catch((error) =>
+      console.error('Error updating value in Firebase:', error)
+    );
+    let res: any = await this.auth.Get('resetSWT');
+  }
+
+  async resetFT(){
+    this.time_FT=''
+
+    this.db
+    .object('timeSFT')
+    .set(this.time_FT)
+    .then(() => console.log('set time success'))
+    .catch((error) =>
+      console.error('Error updating value in Firebase:', error)
+    );
+    let res: any = await this.auth.Get('resetSFT');
+  }
 
   async sendTime() {
     this.data.sft = this.time_FT;
@@ -75,6 +103,20 @@ export class SprinkerComponent implements OnInit {
       .valueChanges();
     sprinklerwater.subscribe((state: any) => {
       this.openWT = state;
+    });
+
+    let qwater = this.db
+      .object('quantitysprinklerwater')
+      .valueChanges();
+      qwater.subscribe((state: any) => {
+      this.sw = state;
+    });
+
+    let qfer = this.db
+      .object('quantitysprinklerfertilizers')
+      .valueChanges();
+      qfer.subscribe((state: any) => {
+      this.sf = state;
     });
   }
 

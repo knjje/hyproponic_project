@@ -1,13 +1,12 @@
-.l-h {
-  line-height: 6;
-}
-
 .l-h3 {
   line-height: 1.5;
 }
+.l-1 {
+  line-height: 1;
+}
 
 /* button */
-button {
+.button {
   font-weight: 600;
   border: solid 2px black;
   outline: 0;
@@ -20,30 +19,67 @@ button {
   cursor: pointer;
 }
 
-button::after {
+.button::after {
   content: '';
   position: absolute;
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
-  background-color: #F8538C;
+  background-color: #141e47;
   z-index: -1;
   border-radius: .35rem;
   border: solid 2px black;
   transition: all .3s ease-in-out;
 }
 
-button.style-2::after {
+.button.style-2::after {
   top: .5rem;
   left: .5rem;
 }
 
-button.style-2:hover::after {
+.button.style-2:hover::after {
   width: calc(100% + .5rem);
   height: calc(100% + .5rem);
 }
 
+
+.button2 {
+  font-weight: 600;
+  border: solid 2px black;
+  outline: 0;
+  padding: 1rem 4rem;
+  font-size: 1.5rem;
+  letter-spacing: .08rem;
+  background-color: white;
+  border-radius: .35rem;
+  position: relative;
+  cursor: pointer;
+}
+
+.button2::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: #02bb33;
+  z-index: -1;
+  border-radius: .35rem;
+  border: solid 2px black;
+  transition: all .3s ease-in-out;
+}
+
+.button2.style-2::after {
+  top: .5rem;
+  left: .5rem;
+}
+
+.button2.style-2:hover::after {
+  width: calc(100% + .5rem);
+  height: calc(100% + .5rem);
+}
 
 .container {
   position: relative;
@@ -59,8 +95,6 @@ button.style-2:hover::after {
   border-radius: 20px;
   overflow: hidden;
 }
-
-
 
 .container .card:before {
   content: '';
@@ -292,4 +326,135 @@ button.style-2:hover::after {
   font-size: 24px;
   text-align: center;
   color: #414141;
+}
+
+.title-web {
+  color: #000000;
+  font-size: 30px;
+  font-weight: 900;
+}
+
+@media screen and (max-width: 440px) {
+  .title-web {
+    font-size: 15px;
+
+  }
+}
+
+
+.box-title {
+  color: white;
+  /* border-radius: 25px; */
+  background-color: white;
+  box-shadow: 0px 4px 20px 0px #00000040;
+  height: 700px;
+}
+
+.farm{
+  width: 100%;
+}
+
+.sub-web{
+  color: #000000;
+  font-size: 20px;
+  font-weight: 500;
+}
+
+
+
+.cardContainer {
+  width: fit-content;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.card {
+  position: relative;
+  width: 370px;
+  height: 350px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  padding: 40px 10px;
+  border-radius: 10px;
+  backdrop-filter: blur(30px);
+  background-color: rgb(255 255 255 / 64%);
+  border: 1px solid rgba(255, 255, 255, 0.089);
+  cursor: pointer;
+}
+
+.city {
+  font-weight: 700;
+  font-size: 35px;
+  letter-spacing: 1.2px;
+  color: rgb(0, 0, 0);
+}
+
+.weather {
+  font-weight: 500;
+  font-size: 0.7em;
+  letter-spacing: 1.2px;
+  color: rgb(0, 0, 0);
+}
+
+.temp {
+  font-size: 1.8em;
+  color: rgb(0, 0, 0);
+}
+
+.minmaxContainer {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.min,
+.max {
+  width: 50%;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  justify-content: center;
+  padding: 0px 20px;
+  gap: 4px;
+}
+
+.max {
+  align-items: flex-start;
+  border-left: 2px solid rgb(0, 0, 0);
+}
+
+.maxHeading,
+.minHeading {
+  font-size: 20px;
+  font-weight: 600;
+  color: rgb(0, 0, 0);
+}
+
+.maxTemp,
+.minTemp {
+  font-size: 18px;
+  font-weight: 500;
+  color: rgb(0, 0, 0);
+}
+
+.cardContainer::before {
+  width: 100px;
+  height: 100px;
+  content: "";
+  position: absolute;
+  background-color: rgb(144, 161, 255);
+  z-index: -1;
+  border-radius: 50%;
+  left: 100px;
+  top: 50px;
+  transition: all 1s;
+}
+
+.cardContainer:hover::before {
+  transform: translate(-50px, 50px);
 }

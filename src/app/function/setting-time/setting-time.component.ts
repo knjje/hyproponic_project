@@ -24,6 +24,61 @@ export class SettingTimeComponent implements OnInit {
   ngOnInit(): void {
     this.getTime()
   }
+  
+
+  async resetFT(){
+    this.time_FT=''
+
+    this.db
+    .object('timeFT')
+    .set(this.time_FT)
+    .then(() => console.log('set time success'))
+    .catch((error) =>
+      console.error('Error updating value in Firebase:', error)
+    );
+    let res: any = await this.auth.Get('resetFT');
+  }
+
+  async resetMB(){
+    this.time_MB=''
+
+    this.db
+    .object('timeMB')
+    .set(this.time_MB)
+    .then(() => console.log('set time success'))
+    .catch((error) =>
+      console.error('Error updating value in Firebase:', error)
+    );
+    let res: any = await this.auth.Get('resetMB');
+  }
+
+  async resetPHU(){
+    this.time_PHU=''
+
+    this.db
+    .object('timePHU')
+    .set(this.time_PHU)
+    .then(() => console.log('set time success'))
+    .catch((error) =>
+      console.error('Error updating value in Firebase:', error)
+    );
+    let res: any = await this.auth.Get('resetPHU');
+  }
+
+  async resetPHD(){
+    this.time_PHD=''
+
+    this.db
+    .object('timePHD')
+    .set(this.time_PHD)
+    .then(() => console.log('set time success'))
+    .catch((error) =>
+      console.error('Error updating value in Firebase:', error)
+    );
+    let res: any = await this.auth.Get('resetPHD');
+  }
+
+
 
   async sendTime() {
     this.data.ft = this.time_FT;

@@ -385,7 +385,7 @@ input:checked+.slider:before {
     border: 3px;
     margin: 4px;
     font-size: 25px;
-    font-weight: 500;
+    font-weight: 600;
 }
 .reset {
     background-color: #d01212;
@@ -417,6 +417,27 @@ input:checked+.slider:before {
     color: white;
 }
 
+.btn-reset-time{
+    width: 220px;
+    height: 55px;
+    border-radius: 30px;
+    border: 3px;
+    margin: 4px;
+    font-weight: 600;
+    font-size: 25px;
+    background-color: #d01212;
+    color: white;
+}
+
+.btn-reset-time:hover {
+    background-color: #950505;
+    color: #ffffff;
+}
+
+.btn-reset-time:active{
+    background-color: #950505;
+    color: #ffffff;
+}
 .btn-submit-time{
     width: 220px;
     height: 55px;

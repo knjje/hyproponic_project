@@ -1,75 +1,147 @@
-<!-- <div class="imgBx">
-        <img src="assets\icon\3.png" class="img1" />
-      </div>
-      <div class="contentBx">
-        <h1 class="mb-2">ระดับน้ำในถัง</h1>
-        <div class="col">
-          <p class="f-50 fw-700 mb-4 l-h3"
-          [class.c-red]="waterStateHigh == false && waterStateLow == false"
-          [class.c-orange]="waterStateHigh == false && waterStateLow == true"
-          [class.c-green]="waterStateHigh == true && waterStateLow == true">
-            {{
-              waterStateHigh == true && waterStateLow == true
-                ? "มากกว่า 80 %"
-                : waterStateHigh == false && waterStateLow == true
-                ? "ต่ำกว่า 80 %"
-                : waterStateHigh == false && waterStateLow == false
-                ? "ต่ำกว่า 10%"
-                : " "
-            }}
-          </p>
-        </div>
-      </div> -->
-
-<div class="row mt-5">
-  <div class="col-xl-3 col-lg-3 col-md-12 col-sm-12 container mb-4">
-    <div class="card">
-      <div class="imgBx">
-        <img src="assets\icon\hot_1684426.png" class="img1" />
-      </div>
-      <div class="contentBx">
-        <h1 class="mb-2">Temperature</h1>
-        <div class="col">
-          <p class="f-50 fw-700 mb-4 l-h3">{{ temperatureValue }} ° C</p>
-        </div>
-      </div>
-    </div>
+<div class="row">
+  <div
+    class="col-xl-3 col-lg-3 col-md-6 col-sm-12 d-flex justify-content-center mb-4"
+  >
+    <button class="button style-2" (click)="openRelay()">ใช้งานอุปกรณ์</button>
   </div>
-
-  <div class="col-xl-3 col-lg-3 col-md-12 col-sm-6 container mb-4">
-    <div class="card">
-      <div class="imgBx">
-        <img src="assets\icon\humidity_4181405.png" class="img3" />
-      </div>
-      <div class="contentBx">
-        <h1 class="mb-2">Humidity</h1>
-        <div class="col">
-          <p class="f-50 fw-700 mb-4 l-h3">{{ humidityValue }} %</p>
-        </div>
-      </div>
-    </div>
+  <div
+    class="col-xl-3 col-lg-3 col-md-6 col-sm-12 d-flex justify-content-center mb-4"
+  >
+    <button class="button style-2" (click)="openSprinker()">
+      ใช้งานสปริงเกอร์
+    </button>
   </div>
-
-  <div class="col-xl-3 col-lg-3 col-md-12 col-sm-6 container mb-4">
-    <div class="card">
-      <div class="imgBx">
-        <img src="assets\icon\drop_3335624.png" class="img2" />
-      </div>
-      <div class="contentBx">
-        <h1 class="mb-2">pH</h1>
-        <div class="col">
-          <p class="f-50 fw-700 mb-4 l-h3">
-            {{ pHValue }}
-          </p>
-        </div>
-      </div>
-    </div>
+  <div
+    class="col-xl-3 col-lg-3 col-md-6 col-sm-12 d-flex justify-content-center mb-4"
+  >
+    <button class="button style-2" (click)="openQuantity()">
+      เติมสารตามปริมาณ
+    </button>
+  </div>
+  <div
+    class="col-xl-3 col-lg-3 col-md-6 col-sm-12 d-flex justify-content-center mb-4"
+  >
+    <button class="button style-2" (click)="openSetTime()">
+      ตั้งค่าเวลาอุปกรณ์
+    </button>
   </div>
 </div>
+<div class="row justify-content-center mt-4">
+  <span class="cardContainer mb-4">
+    <div class="card">
+      <p class="city">Temperature</p>
+      <svg
+        class="weather"
+        version="1.1"
+        id="Layer_1"
+        x="0px"
+        y="0px"
+        width="50px"
+        height="50px"
+        viewBox="0 0 100 100"
+        xml:space="preserve"
+      >
+        <image
+          id="image0"
+          width="100"
+          height="100"
+          x="0"
+          y="0"
+          href="assets\icon\hot_1684426.png"
+        ></image>
+      </svg>
+      <p class="temp">{{ temperatureValue }}°</p>
+      <div class="minmaxContainer">
+        <div class="min">
+          <p class="minHeading">Min</p>
+          <p class="minTemp">15°</p>
+        </div>
+        <div class="max">
+          <p class="maxHeading">Max</p>
+          <p class="maxTemp">30°</p>
+        </div>
+      </div>
+    </div>
+  </span>
 
-<div class="row mb-3">
+  <span class="cardContainer mb-4">
+    <div class="card">
+      <p class="city">Humidity</p>
+      <svg
+        class="weather"
+        version="1.1"
+        id="Layer_1"
+        x="0px"
+        y="0px"
+        width="50px"
+        height="50px"
+        viewBox="0 0 100 100"
+        xml:space="preserve"
+      >
+        <image
+          id="image0"
+          width="100"
+          height="100"
+          x="0"
+          y="0"
+          href="assets\icon\humidity_4181405.png"
+        ></image>
+      </svg>
+      <p class="temp">{{ humidityValue }}%</p>
+      <div class="minmaxContainer">
+        <div class="min">
+          <p class="minHeading">Min</p>
+          <p class="minTemp">40%</p>
+        </div>
+        <div class="max">
+          <p class="maxHeading">Max</p>
+          <p class="maxTemp">80%</p>
+        </div>
+      </div>
+    </div>
+  </span>
+
+  <span class="cardContainer mb-4">
+    <div class="card">
+      <p class="city">pH</p>
+      <svg
+        class="weather"
+        version="1.1"
+        id="Layer_1"
+        x="0px"
+        y="0px"
+        width="50px"
+        height="50px"
+        viewBox="0 0 100 100"
+        xml:space="preserve"
+      >
+        <image
+          id="image0"
+          width="100"
+          height="100"
+          x="0"
+          y="0"
+          href="assets\icon\drop_3335624.png"
+        ></image>
+      </svg>
+      <p class="temp">{{ pHValue }}</p>
+      <div class="minmaxContainer">
+        <div class="min">
+          <p class="minHeading">Min</p>
+          <p class="minTemp">3</p>
+        </div>
+        <div class="max">
+          <p class="maxHeading">Max</p>
+          <p class="maxTemp">8</p>
+        </div>
+      </div>
+    </div>
+  </span>
+</div>
+
+<div class="row mb-4 justify-content-center">
   <div
-    class="col-xl-12 col-lg-12 col-md-12 col-sm-12 d-flex justify-content-center"
+    class="col-xl-6 col-lg-6 col-md-6 col-sm-12 d-flex justify-content-center"
   >
     <div class="space-card">
       <div class="card3">
@@ -106,26 +178,15 @@
     </div>
   </div>
 </div>
-
-<div class="row">
-  <div
-    class="col-xl-3 col-lg-3 col-md-6 col-sm-12 d-flex justify-content-center mb-4"
-  >
-    <button class="style-2" (click)="openRelay()">ใช้งานอุปกรณ์</button>
+<div class="row mb-2">
+  <div class="col-12 justify-content-center d-flex">
+    <p class="title-web l-h3">
+      Scan Qr Code เข้ากลุ่ม Line เพื่อรับการแจ้งเตือน
+    </p>
   </div>
-  <div
-    class="col-xl-3 col-lg-3 col-md-6 col-sm-12 d-flex justify-content-center mb-4"
-  >
-    <button class="style-2" (click)="openSprinker()">ใช้งานสปริงเกอร์</button>
-  </div>
-  <div
-    class="col-xl-3 col-lg-3 col-md-6 col-sm-12 d-flex justify-content-center mb-4"
-  >
-    <button class="style-2" (click)="openQuantity()">เติมสารตามปริมาณ</button>
-  </div>
-  <div
-    class="col-xl-3 col-lg-3 col-md-6 col-sm-12 d-flex justify-content-center mb-4"
-  >
-    <button class="style-2" (click)="openSetTime()">ตั้งค่าเวลาอุปกรณ์</button>
+</div>
+<div class="row mb-4">
+  <div class="col-12 justify-content-center d-flex">
+    <img src="assets\image\join_line.jpg" style="width: 250px; height: 250px;" />
   </div>
 </div>

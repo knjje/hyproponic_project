@@ -16,8 +16,6 @@ export class HomeComponent implements OnInit {
   pump_ph_down: any;
   pump_ph_up: any;
   pump_water_up: any;
-  sprinklerfertilizers: any;
-  sprinklerwater: any;
 
   constructor(
     private auth: AuthService,
@@ -57,6 +55,7 @@ export class HomeComponent implements OnInit {
     }
   }
 
+
   openRelay() {
     window.location.href = '/relay'
   }
@@ -67,6 +66,9 @@ export class HomeComponent implements OnInit {
     window.location.href = '/sprinker'
   }
   openSetTime() {
+    window.location.href = '/set-time'
+  }
+  addgroup() {
     window.location.href = '/set-time'
   }
 }
