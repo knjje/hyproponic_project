@@ -66,9 +66,9 @@ export class SprinkerComponent implements OnInit {
     let res: any = await this.auth.Get('resetSFT');
   }
 
-  async sendTime() {
-    this.data.sft = this.time_FT;
-    this.data.swt = this.time_WT;
+  async sendTimeSFT() {
+    let bodySFT = {sft:''}
+    bodySFT.sft = this.time_FT;
 
     this.db
     .object('timeSFT')
@@ -78,6 +78,12 @@ export class SprinkerComponent implements OnInit {
       console.error('Error updating value in Firebase:', error)
     );
 
+    let res: any = await this.auth.Post('updateCronSFT', bodySFT);
+  }
+  async sendTimeSWT() {
+    let bodySWT = {swt:''}
+    bodySWT.swt = this.time_WT;
+
     this.db
     .object('timeSWT')
     .set(this.time_WT)
@@ -86,8 +92,7 @@ export class SprinkerComponent implements OnInit {
       console.error('Error updating value in Firebase:', error)
     );
 
-    let res: any = await this.auth.Post('updateCronSprinker', this.data);
-    console.log(this.data);
+    let res: any = await this.auth.Post('updateCronSWT', bodySWT);
   }
 
   getdata() {

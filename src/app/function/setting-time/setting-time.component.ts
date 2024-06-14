@@ -8,12 +8,6 @@ import { AuthService } from 'src/app/service/auth.service';
   styleUrls: ['./setting-time.component.css'],
 })
 export class SettingTimeComponent implements OnInit {
-  data: any = {
-    ft: '',
-    mb: '',
-    phU: '',
-    phD: '',
-  };
   time_FT: any = '';
   time_MB: any = '';
   time_PHD: any = '';
@@ -79,13 +73,9 @@ export class SettingTimeComponent implements OnInit {
   }
 
 
-
-  async sendTime() {
-    this.data.ft = this.time_FT;
-    this.data.mb = this.time_MB;
-    this.data.phU = this.time_PHU;
-    this.data.phD = this.time_PHD;
-
+  async sendTimeFT(){
+    let bodyFT = {ft:''}
+    bodyFT.ft = this.time_FT
     this.db
     .object('timeFT')
     .set(this.time_FT)
@@ -93,7 +83,12 @@ export class SettingTimeComponent implements OnInit {
     .catch((error) =>
       console.error('Error updating value in Firebase:', error)
     );
+    let res: any = await this.auth.Post('updateFT', bodyFT);
+  }
 
+  async sendTimeMB(){
+    let bodyMB = {mb:''}
+    bodyMB.mb = this.time_MB
     this.db
     .object('timeMB')
     .set(this.time_MB)
@@ -101,7 +96,13 @@ export class SettingTimeComponent implements OnInit {
     .catch((error) =>
       console.error('Error updating value in Firebase:', error)
     );
+    let res: any = await this.auth.Post('updateMB', bodyMB);
 
+  }
+
+  async sendTimePHU(){
+    let bodyPHU = {phU:''}
+    bodyPHU.phU = this.time_PHU
     this.db
     .object('timePHU')
     .set(this.time_PHU)
@@ -109,7 +110,13 @@ export class SettingTimeComponent implements OnInit {
     .catch((error) =>
       console.error('Error updating value in Firebase:', error)
     );
+    let res: any = await this.auth.Post('updatePhU', bodyPHU);
 
+  }
+
+  async sendTimePHD(){
+    let bodyPHD = {phD:''}
+    bodyPHD.phD = this.time_PHD
     this.db
     .object('timePHD')
     .set(this.time_PHD)
@@ -117,9 +124,8 @@ export class SettingTimeComponent implements OnInit {
     .catch((error) =>
       console.error('Error updating value in Firebase:', error)
     );
+    let res: any = await this.auth.Post('updatePhD', bodyPHD);
 
-    let res: any = await this.auth.Post('updateCron', this.data);
-    console.log(this.data);
   }
 
 
