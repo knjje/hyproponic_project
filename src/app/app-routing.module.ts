@@ -29,6 +29,7 @@ const routes: Routes = [
   {
     path: '',
     component: MainComponent,
+    canActivate: [authGuard],
     children: [
       { path: 'home', component: HomeComponent },
       { path: 'quantity', component: QuantityComponent },

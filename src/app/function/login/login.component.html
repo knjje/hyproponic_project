@@ -12,6 +12,7 @@
               placeholder="Email"
               [(ngModel)]="email"
               name="email"
+              (keydown.enter)="login()"
             />
             <label for="">Email</label>
           </form>
@@ -23,6 +24,7 @@
               [(ngModel)]="password"
               placeholder="Password"
               name="password"
+              (keydown.enter)="login()"
             />
             <label for="">Password</label>
           </form>

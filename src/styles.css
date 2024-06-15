@@ -386,6 +386,7 @@ input:checked+.slider:before {
     margin: 4px;
     font-size: 25px;
     font-weight: 600;
+    border: #000000 3px solid;
 }
 .reset {
     background-color: #d01212;

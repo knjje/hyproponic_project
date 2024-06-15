@@ -11,6 +11,7 @@
                 id=""
                 placeholder="Email"
                 [(ngModel)]="email"
+                (keydown.enter)="register()"
                 name="email"
               />
               <label for="">Email</label>
@@ -21,21 +22,11 @@
                 class="form-control"
                 id=""
                 [(ngModel)]="password"
+                (keydown.enter)="register()"
                 placeholder="Password"
                 name="password"
               />
               <label for="">Password</label>
-            </form>
-            <form class="form-floating mb-3">
-              <input
-                type="password"
-                class="form-control"
-                id=""
-                [(ngModel)]="ConfirmPassword"
-                placeholder="ConfirmPassword"
-                name="ConfirmPassword"
-              />
-              <label for="">Confirm Password</label>
             </form>
           
             <div class="row d-flex justify-content-center mb-2 m-0 p-0">

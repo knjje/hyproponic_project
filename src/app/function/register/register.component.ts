@@ -16,12 +16,6 @@ export class RegisterComponent implements OnInit {
   ngOnInit(): void {}
 
   register() {
-    if (this.password == this.ConfirmPassword) {
       this.auth.register(this.email, this.password);
-    } else if (this.password != this.ConfirmPassword) {
-      this.auth.Swal('รหัสผ่านไม่ตรงกัน', 'error');
-    } else {
-      console.log('register error');
-    }
-  }
+}
 }
