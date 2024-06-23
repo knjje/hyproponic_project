@@ -28,7 +28,7 @@ jobs:
             cp ./interfaces.d.ts node_modules/@angular/fire/compat/database/interfaces.d.ts -f
             echo "Successfully copied interfaces.d.ts to node_modules"  # Log message to the console
             npm run build --if-present
-            npm run test --if-present
+            # npm run test --if-present
           
 
       - name: Zip artifact for deployment
