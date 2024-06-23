@@ -1,6 +1,6 @@
 export const environment = {
     production:true,
-    endpoint: 'https://kaotomguifarm.azurewebsites.net',
+    endpoint: '',
     firebase: {
         apiKey: "AIzaSyDC4RoIxtD36gbhFYJeCGEPFXgqDbhk2Cw",
         authDomain: "test-esp32-14072.firebaseapp.com",
