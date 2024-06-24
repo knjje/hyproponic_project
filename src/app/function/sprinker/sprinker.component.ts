@@ -19,11 +19,6 @@ export class SprinkerComponent implements OnInit {
   openWT: any;
   time_FT: any = '';
   time_WT: any = '';
-  endTimeFromDatabase: any = new Date().getTime();
-  data: any = {
-    sft: '',
-    swt: '',
-  };
 
   constructor(private auth: AuthService, private db: AngularFireDatabase) {}
 

@@ -19,7 +19,6 @@ export class SettingTimeComponent implements OnInit {
     this.getTime()
   }
   
-
   async resetFT(){
     this.time_FT=''
 
