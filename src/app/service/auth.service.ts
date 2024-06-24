@@ -34,82 +34,81 @@ export class AuthService {
 
 
   //login
+    // login(email: string, password: string) {
+    //   this.fireauth.signInWithEmailAndPassword(email, password)
+    //   .then((userCredential) => {
+    //     // Signed in successfully
+    //     const user = userCredential.user;
+    //     this.router.navigate(['/home']);
+    //     console.log(user);
+    //     this.loggedIn = true;
+    //   })
+    //   .catch((error) => {
+    //     this.loggedIn = true;
+    //     const errorCode = error.code;
+    //     const errorMessage = error.message;
+    //     console.error(errorMessage);
+    //     if (errorMessage == 'Firebase: Error (auth/missing-email).') {
+    //               this.Swal('กรุณากรอกอีเมลให้ถูกต้อง', 'error');
+    //             } else if (
+    //               errorMessage ==
+    //               'Firebase: The email address is badly formatted. (auth/invalid-email).'
+    //             ) {
+    //               this.Swal('กรุณากรอกอีเมลให้ถูกต้อง', 'error');
+    //             } else if (
+    //               errorMessage ==
+    //               'Firebase: The supplied auth credential is incorrect, malformed or has expired. (auth/invalid-credential).'
+    //             ) {
+    //               this.Swal('ไม่สามารถเข้าสู่ระบบได้', 'error');
+    //             } else if (
+    //               errorMessage ==
+    //               'Firebase: A non-empty password must be provided (auth/missing-password).'
+    //             ) {
+    //               this.Swal('กรุณากรอกรหัสผ่าน', 'error');
+    //             } else if (
+    //               errorMessage ==
+    //               'Firebase: This operation is restricted to administrators only. (auth/admin-restricted-operation).'
+    //             ) {
+    //               this.Swal('กรุณากรอกข้อมูล', 'error');
+    //             }
+    //             this.router.navigate(['/login']);
+    //   });
+    // }
+  
+
+
     login(email: string, password: string) {
       this.fireauth.signInWithEmailAndPassword(email, password)
-      .then((userCredential) => {
-        // Signed in successfully
-        const user = userCredential.user;
-        this.router.navigate(['/home']);
-        console.log(user);
-        this.loggedIn = true;
-      })
-      .catch((error) => {
-        this.loggedIn = true;
-        const errorCode = error.code;
-        const errorMessage = error.message;
-        console.error(errorMessage);
-        if (errorMessage == 'Firebase: Error (auth/missing-email).') {
-                  this.Swal('กรุณากรอกอีเมลให้ถูกต้อง', 'error');
-                } else if (
-                  errorMessage ==
-                  'Firebase: The email address is badly formatted. (auth/invalid-email).'
-                ) {
-                  this.Swal('กรุณากรอกอีเมลให้ถูกต้อง', 'error');
-                } else if (
-                  errorMessage ==
-                  'Firebase: The supplied auth credential is incorrect, malformed or has expired. (auth/invalid-credential).'
-                ) {
-                  this.Swal('ไม่สามารถเข้าสู่ระบบได้', 'error');
-                } else if (
-                  errorMessage ==
-                  'Firebase: A non-empty password must be provided (auth/missing-password).'
-                ) {
-                  this.Swal('กรุณากรอกรหัสผ่าน', 'error');
-                } else if (
-                  errorMessage ==
-                  'Firebase: This operation is restricted to administrators only. (auth/admin-restricted-operation).'
-                ) {
-                  this.Swal('กรุณากรอกข้อมูล', 'error');
-                }
-                this.router.navigate(['/login']);
-      });
+        .then((userCredential) => {
+          // Signed in successfully
+          const user = userCredential.user;
+          this.router.navigate(['/home']);
+          console.log(user);
+          this.loggedIn = true;
+          // เก็บ token หรือสถานะการล็อกอินใน Local Storage
+          localStorage.setItem('loggedIn', 'true');
+          localStorage.setItem('user', JSON.stringify(user));
+        })
+        .catch((error) => {
+          this.loggedIn = false;
+          const errorCode = error.code;
+          const errorMessage = error.message;
+          console.error(errorMessage);
+          if (errorMessage == 'Firebase: Error (auth/missing-email).') {
+            this.Swal('กรุณากรอกอีเมลให้ถูกต้อง', 'error');
+          } else if (errorMessage == 'Firebase: The email address is badly formatted. (auth/invalid-email).') {
+            this.Swal('กรุณากรอกอีเมลให้ถูกต้อง', 'error');
+          } else if (errorMessage == 'Firebase: The supplied auth credential is incorrect, malformed or has expired. (auth/invalid-credential).') {
+            this.Swal('ไม่สามารถเข้าสู่ระบบได้', 'error');
+          } else if (errorMessage == 'Firebase: A non-empty password must be provided (auth/missing-password).') {
+            this.Swal('กรุณากรอกรหัสผ่าน', 'error');
+          } else if (errorMessage == 'Firebase: This operation is restricted to administrators only. (auth/admin-restricted-operation).') {
+            this.Swal('กรุณากรอกข้อมูล', 'error');
+          }
+          this.router.navigate(['/login']);
+        });
     }
-  // login(email: string, password: string) {
-  //   this.fireauth.signInWithEmailAndPassword(email, password).then(
-  //     () => {
-  //       localStorage.setItem('token', 'true');
-  //       this.router.navigate(['/home']);
-  //     },
-  //     (err) => {
-  //       let msg = err.message;
-  //       console.log(msg);
-  //       if (msg == 'Firebase: Error (auth/missing-email).') {
-  //         this.Swal('กรุณากรอกอีเมลให้ถูกต้อง', 'error');
-  //       } else if (
-  //         msg ==
-  //         'Firebase: The email address is badly formatted. (auth/invalid-email).'
-  //       ) {
-  //         this.Swal('กรุณากรอกอีเมลให้ถูกต้อง', 'error');
-  //       } else if (
-  //         msg ==
-  //         'Firebase: The supplied auth credential is incorrect, malformed or has expired. (auth/invalid-credential).'
-  //       ) {
-  //         this.Swal('ไม่สามารถเข้าสู่ระบบได้', 'error');
-  //       } else if (
-  //         msg ==
-  //         'Firebase: A non-empty password must be provided (auth/missing-password).'
-  //       ) {
-  //         this.Swal('กรุณากรอกรหัสผ่าน', 'error');
-  //       } else if (
-  //         msg ==
-  //         'Firebase: This operation is restricted to administrators only. (auth/admin-restricted-operation).'
-  //       ) {
-  //         this.Swal('กรุณากรอกข้อมูล', 'error');
-  //       }
-  //       this.router.navigate(['/login']);
-  //     }
-  //   );
-  // }
+    
 
   //register
   register(email: string, password: string) {
@@ -154,7 +153,8 @@ export class AuthService {
     this.fireauth.signOut().then(
       () => {
         this.loggedIn = false;
-        localStorage.removeItem('token');
+        localStorage.removeItem('loggedIn');
+        localStorage.removeItem('user');
         this.router.navigate(['/login']);
       },
       (err) => {
@@ -164,7 +164,7 @@ export class AuthService {
   }
 
   isLoggedIn(): boolean {
-    return this.loggedIn;
+    return localStorage.getItem('loggedIn') === 'true';
   }
 
   //get data มาดู

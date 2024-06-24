@@ -1,4 +1,4 @@
-<div class="row">
+<!-- <div class="row">
   <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 container mb-4">
     <div class="card">
       <div class="contentBx">
@@ -46,4 +46,56 @@
         </ng-container>
       </div>
     </div>
+  </div> -->
+
+
+
+  <div class="container">
+    <div class="card">
+      <div class="contentBx">
+        <h1 class="mb-4">Login</h1>
+        <ng-container>
+          <form class="form-floating mb-3">
+            <input
+              type="email"
+              class="form-control"
+              id=""
+              placeholder="Email"
+              [(ngModel)]="email"
+              name="email"
+              (keydown.enter)="login()"
+            />
+            <label for="">Email</label>
+          </form>
+          <form class="form-floating mb-3">
+            <input
+              type="password"
+              class="form-control"
+              id=""
+              [(ngModel)]="password"
+              placeholder="Password"
+              name="password"
+              (keydown.enter)="login()"
+            />
+            <label for="">Password</label>
+          </form>
+  
+          <div class="row d-flex justify-content-center mb-2 m-0 p-0">
+            <div class="col-xl-12 col-lg-10 col-md-12 col-12 m-0 p-0">
+              <button (click)="login()" class="btn w-100 btn-login c-wh fw-500">
+                Login
+              </button>
+            </div>
+          </div>
+  
+          <div class="row text-center">
+            <div class="col-xl-12 col-lg-10 col-md-12 col-12 mt-4">
+              <span>Already have an account?</span> &nbsp;
+              <a href="register" class="c-g fw-500">Register</a>
+            </div>
+          </div>
+        </ng-container>
+      </div>
+    </div>
   </div>
+  

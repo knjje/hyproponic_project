@@ -1,38 +1,38 @@
 .container {
-	position: relative;
-	display: flex;
-	justify-content: center;
-  }
-  
-  .container .card {
-	position: relative;
-    width: 570px;
-    height: 580px;
-	background: #ffffff;
-	border-radius: 20px;
-	overflow: hidden;
-	padding: 10px;
-  }
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh; /* ให้คอนเทนเนอร์สูงเต็มหน้าจอ */
+}
 
-  .container .card .contentBx {
-    position: absolute;
-    bottom: 135px;
-    width: 70%;
-    height: 310px;
-    text-align: center;
-    transition: 1s;
-    z-index: 10;
-    left: 84px;
-  }
-  
-  .container .card .contentBx h1 {
-	position: relative;
-	font-weight: 700;
-	letter-spacing: 2px;
-	color: #000000;
-	margin: 0;
-	font-size: 28px;
-  }
-  
-  
-  
+.container .card {
+  position: relative;
+  width: 100%;
+  max-width: 570px; /* จำกัดความกว้างสูงสุด */
+  height: 580px;
+  background: #ffffff;
+  border-radius: 20px;
+  overflow: hidden;
+  padding: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.container .card .contentBx {
+  position: relative;
+  width: 100%;
+  max-width: 70%; /* ให้เนื้อหาภายในมีความกว้างสูงสุด */
+  text-align: center;
+  transition: 1s;
+}
+
+.container .card .contentBx h1 {
+  position: relative;
+  font-weight: 700;
+  letter-spacing: 2px;
+  color: #000000;
+  margin: 0;
+  font-size: 28px;
+}

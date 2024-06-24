@@ -12,10 +12,11 @@ export class authGuard {
   constructor(private auth: AuthService , private router: Router) {}
 
   canActivate(): boolean {
-    if (this.auth.isLoggedIn()) {
+    const loggedIn = localStorage.getItem('loggedIn');
+    if (loggedIn === 'true') {
       return true;
     } else {
-      this.router.navigate(['/login']); // ให้นำทางไปยังหน้า login หากยังไม่ได้ล็อกอิน
+      this.router.navigate(['/login']);
       return false;
     }
   }
