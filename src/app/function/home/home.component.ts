@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { AuthService } from 'src/app/service/auth.service';
 import { environment } from 'src/environments/environment';
 import { AngularFireDatabase } from '@angular/fire/compat/database';
-@Component({
+import { Chart, registerables } from 'chart.js';@Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.css'],
@@ -20,11 +20,54 @@ export class HomeComponent implements OnInit {
   constructor(
     private auth: AuthService,
     private db: AngularFireDatabase,
-  ) {}
+  ) {
+    Chart.register(...registerables);
+  }
 
   async ngOnInit(): Promise<void> {
     await this.getdata();
+    const ctx = document.getElementById('myChart') as HTMLCanvasElement;
+    new Chart(ctx, {
+      type: 'line',
+      data: {
+        labels: ['Red', 'Blue', 'Yellow', 'Green', 'Purple', 'Orange'],
+        datasets: [
+          {
+            label: 'Temperature in °C',
+            data: [12, 19, 3, 5, 2, 3],
+            borderWidth: 2,
+            borderColor: 'rgba(75, 192, 192, 1)',
+            backgroundColor: 'rgba(75, 192, 192, 0.2)',
+            fill: false,
+          },
+          {
+            label: 'Humidity in %',
+            data: [30, 50, 20, 40, 60, 70],
+            borderWidth: 2,
+            borderColor: 'rgba(153, 102, 255, 1)',
+            backgroundColor: 'rgba(153, 102, 255, 0.2)',
+            fill: false,
+          },
+          {
+            label: 'Humidity in %',
+            data: [2, 8, 6, 5, 8, 7],
+            borderWidth: 2,
+            borderColor: 'rgba(13, 102, 255, 1)',
+            backgroundColor: 'rgba(13, 102, 255, 0.2)',
+            fill: false,
+          }
+        ]
+      },
+      options: {
+        scales: {
+          y: {
+            beginAtZero: true
+          }
+        }
+      }
+    });
   }
+  
 
   logout() {
     this.auth.logout();
