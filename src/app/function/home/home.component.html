@@ -26,7 +26,7 @@
     </button>
   </div>
 </div> -->
-<div class="row justify-content-center mt-4">
+<div class="row justify-content-center mt-4 mb-4">
   <span class="cardContainer mb-4">
     <div class="card">
       <p class="city">Temperature</p>
@@ -139,14 +139,47 @@
   </span>
 </div>
 
-<div class="row mt-4" >
-  <div class="col m-4" style="background-color: white;">
+<div class="row mt-4">
+  <div class="col-12 justify-content-center d-flex">
+    <p class="f-28 fw-500 text-center">เลือกวันที่ที่ต้องการให้แสดงค่าการเปลี่ยนแปลงของอุณหภูมิ ความชื้น และ ค่า pH</p>
+  </div>
+</div>
+
+<div class="row mt-4">
+  <div class="col-xl-12 col-lg-12 justify-content-center d-flex">
+    <mat-form-field>
+      <mat-label>Choose a start date</mat-label>
+      <input
+        matInput
+        [matDatepicker]="startDate"
+        [(ngModel)]="body.startDate"
+      />
+      <mat-datepicker-toggle
+        matSuffix
+        [for]="startDate"
+      ></mat-datepicker-toggle>
+      <mat-datepicker #startDate></mat-datepicker>
+    </mat-form-field>
+    <span class="ms-3 d-flex mt-2">
+      <button
+        mat-raised-button
+        color="primary"
+        (click)="getLog()"
+      >
+        Click
+      </button>
+    </span>
+  </div>
+</div>
+
+<div class="row justify-content-center">
+  <div class="col-xl-3 col-lg-3 col-md-6 col-sm-12  m-4 p-3 justify-content-center" style="background-color: white">
     <canvas id="temp"></canvas>
   </div>
-  <div class="col m-4" style="background-color: white;">
+  <div class="col-xl-3 col-lg-3 col-md-6 col-sm-12  m-4 p-3 justify-content-center" style="background-color: white">
     <canvas id="humi"></canvas>
   </div>
-  <div class="col m-4" style="background-color: white;">
+  <div class="col-xl-3 col-lg-3 col-md-6 col-sm-12  m-4 p-3 justify-content-center" style="background-color: white">
     <canvas id="ph"></canvas>
   </div>
 </div>
@@ -190,6 +223,7 @@
     </div>
   </div>
 </div>
+
 <div class="row mb-2">
   <div class="col-12 justify-content-center d-flex">
     <p class="title-web l-h3">
@@ -199,6 +233,6 @@
 </div>
 <div class="row mb-4">
   <div class="col-12 justify-content-center d-flex">
-    <img src="assets\image\join_line.jpg" style="width: 250px; height: 250px;" />
+    <img src="assets\image\join_line.jpg" style="width: 250px; height: 250px" />
   </div>
 </div>
