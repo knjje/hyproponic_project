@@ -5,7 +5,7 @@ import { Router } from '@angular/router';
 import { environment } from 'src/environments/environment.development';
 import Swal from 'sweetalert2';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { BehaviorSubject } from 'rxjs';
+import { BehaviorSubject, lastValueFrom } from 'rxjs';
 import { User } from 'firebase/auth';
 
 import {
@@ -228,9 +228,7 @@ export class AuthService {
     const body = data;
 
     try {
-      const response = await this.http
-        .post<any>(`${environment.endpoint}${path}`, body)
-        .subscribe();
+      const response = await lastValueFrom(this.http.post<any>(`${environment.endpoint}${path}`, body));
       return response;
     } catch (error) {
       console.error('An error occurred:', error);

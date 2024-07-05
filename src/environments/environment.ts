@@ -1,6 +1,6 @@
 export const environment = {
     production: false,
-    endpoint: '',
+    endpoint: 'http://localhost:3000/',
     firebase: {
         apiKey: "AIzaSyDC4RoIxtD36gbhFYJeCGEPFXgqDbhk2Cw",
         authDomain: "test-esp32-14072.firebaseapp.com",

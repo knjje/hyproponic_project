@@ -50,7 +50,6 @@ export class HomeComponent implements OnInit {
   ngOnInit(): void {
     this.getdata();
     this.getLog();
-    this.test();
   }
 
   async test() {
@@ -76,27 +75,47 @@ export class HomeComponent implements OnInit {
         'yyyy-MM-dd'
       );
     }
-
+  
     console.log('Formatted Date Range:', this.body);
     try {
       let res: any = await this.auth.Post('filLog', this.body);
-      console.log('Response from API:', res);
-
-      this.data = res.data; // Assuming res contains the entire response object with data property
-      this.createCharts();
+      console.log('Response:', res);  // Log the response to inspect it
+      if (res && Array.isArray(res.data)) {
+        this.data = res.data;  // If the array is nested within a 'data' property
+        console.log(this.data, 'dtaaaasa');
+        this.createCharts();
+      } else {
+        console.error('Response is not an array:', res);
+      }
     } catch (error) {
       console.error('Error fetching log data:', error);
     }
   }
-
+  
   createCharts(): void {
+    if (!Array.isArray(this.data)) {
+      console.error('Data is not an array:', this.data);
+      return;
+    }
+  
     const timestamps = this.data.map((item: any) =>
       this.formatTimestamp(item.timestamp)
     );
     const temperatures = this.data.map((item: any) => item.temperature);
     const humidities = this.data.map((item: any) => item.humidity);
     const phValues = this.data.map((item: any) => item.ph);
-
+  
+    // Check if charts already exist and destroy them before creating new ones
+    if (this.tempChart) {
+      this.tempChart.destroy();
+    }
+    if (this.humiChart) {
+      this.humiChart.destroy();
+    }
+    if (this.phChart) {
+      this.phChart.destroy();
+    }
+  
     this.tempChart = this.createChart(
       'temp',
       'Temperature in °C',
@@ -119,6 +138,8 @@ export class HomeComponent implements OnInit {
       'rgba(255, 99, 132, 1)'
     );
   }
+  
+  
 
   formatTimestamp(timestamp: string): string {
     const date = new Date(timestamp);
